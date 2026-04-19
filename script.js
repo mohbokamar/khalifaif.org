@@ -14,6 +14,8 @@ const translations = {
   ar: {
     unavailable: "\u063a\u064a\u0631 \u0645\u062a\u0648\u0641\u0631 \u062d\u0627\u0644\u064a\u064b\u0627",
     available: "\u0645\u062a\u0648\u0641\u0631",
+    pageTitle: "\u062e\u0637 \u0627\u0644\u0641\u0642\u0631 \u0641\u064a \u0644\u064a\u0628\u064a\u0627 | \u0645\u0624\u0633\u0633\u0629 \u062e\u0644\u064a\u0641\u0629 \u0627\u0644\u062f\u0648\u0644\u064a\u0629",
+    pageDescription: "\u0644\u0648\u062d\u0629 \u062a\u0641\u0627\u0639\u0644\u064a\u0629 \u062a\u0639\u0631\u0636 \u062e\u0637 \u0627\u0644\u0641\u0642\u0631 \u0627\u0644\u0645\u062f\u0642\u0639 \u0648\u0627\u0644\u0645\u0637\u0644\u0642 \u0641\u064a \u0644\u064a\u0628\u064a\u0627 \u0645\u0639 \u062a\u062d\u062f\u064a\u062b\u0627\u062a \u0631\u0628\u0639 \u0633\u0646\u0648\u064a\u0629 \u0642\u0627\u0628\u0644\u0629 \u0644\u0644\u0625\u062f\u0627\u0631\u0629.",
     heroNote: "\u0627\u0644\u0645\u0624\u0634\u0631\u0627\u062a \u0627\u0644\u0623\u0633\u0627\u0633\u064a\u0629",
     drawerTitle: "\u0627\u062e\u062a\u0631 \u0627\u0644\u0633\u0646\u0629 \u0648\u0627\u0644\u0631\u0628\u0639",
     drawerDesc: "\u0627\u0644\u0623\u0631\u0628\u0627\u0639 \u063a\u064a\u0631 \u0627\u0644\u0645\u062a\u0627\u062d\u0629 \u0633\u062a\u0638\u0647\u0631 \u0628\u062d\u0627\u0644\u0629 \u063a\u064a\u0631 \u0645\u062a\u0648\u0641\u0631 \u062d\u0627\u0644\u064a\u064b\u0627.",
@@ -44,11 +46,17 @@ const translations = {
     chartFamily: "\u0639\u0627\u0626\u0644\u0629 \u0645\u0646 5 \u0623\u0641\u0631\u0627\u062f",
     chartMeb: "\u0627\u0644\u0645\u062f\u0642\u0639 (MEB)",
     chartMebPlus: "\u0627\u0644\u0645\u0637\u0644\u0642 (MEB+)",
-    chartIntl: "\u0627\u0644\u062f\u0648\u0644\u064a (8$)"
+    chartIntl: "\u0627\u0644\u062f\u0648\u0644\u064a (8$)",
+    chartBfx: "BFX % ????? ???????",
+    chartMebMarket: "MEB % ??? ???????",
+    close: "\u0625\u063a\u0644\u0627\u0642",
+    brandAlt: "\u0634\u0639\u0627\u0631 \u0645\u0624\u0633\u0633\u0629 \u062e\u0644\u064a\u0641\u0629 \u0627\u0644\u062f\u0648\u0644\u064a\u0629"
   },
   en: {
     unavailable: "Currently unavailable",
     available: "Available",
+    pageTitle: "Poverty Line in Libya | Khalifa International Foundation",
+    pageDescription: "Interactive dashboard showing extreme and absolute poverty lines in Libya with manageable quarterly updates.",
     heroNote: "Core Indicators",
     drawerTitle: "Choose year and quarter",
     drawerDesc: "Unavailable quarters will be marked as currently unavailable.",
@@ -79,7 +87,11 @@ const translations = {
     chartFamily: "Family of 5",
     chartMeb: "Extreme (MEB)",
     chartMebPlus: "Absolute (MEB+)",
-    chartIntl: "International (8$)"
+    chartIntl: "International (8$)",
+    chartBfx: "BFX % ????? ???????",
+    chartMebMarket: "MEB % ??? ???????",
+    close: "Close",
+    brandAlt: "Khalifa Foundation logo"
   }
 };
 
@@ -244,9 +256,21 @@ function setText(id, value) {
   }
 }
 
+function parseFamilyValue(row) {
+  const source = state.language === "ar" ? row.family?.ar : row.family?.en;
+  const match = String(source || "").match(/[\d.,]+/);
+  return match ? Number(match[0].replace(/,/g, "")) : 0;
+}
+
 function applyStaticTranslations() {
   document.documentElement.lang = state.language;
   document.documentElement.dir = state.language === "ar" ? "rtl" : "ltr";
+  document.title = t("pageTitle");
+
+  const metaDescription = document.querySelector('meta[name="description"]');
+  if (metaDescription) {
+    metaDescription.setAttribute("content", t("pageDescription"));
+  }
 
   elements.langButtons.forEach((button) => {
     button.classList.toggle("is-active", button.dataset.lang === state.language);
@@ -254,6 +278,7 @@ function applyStaticTranslations() {
 
   if (elements.brandLogo) {
     elements.brandLogo.src = state.language === "ar" ? "./assets/logo-ar.png" : "./assets/logo-en.png";
+    elements.brandLogo.alt = t("brandAlt");
   }
 
   document.querySelectorAll("[data-copy]").forEach((node) => {
@@ -262,6 +287,15 @@ function applyStaticTranslations() {
       node.textContent = node.dataset[key];
     }
   });
+
+  setText("browseIndicatorsButton", t("browseIndicators"));
+  setText("openDrawerButton", t("editPeriod"));
+  setText("openDrawerButtonSecondary", t("editPeriod"));
+  setText("drawerTitle", t("drawerTitle"));
+  setText("drawerDescription", t("drawerDesc"));
+  setText("yearLabel", t("year"));
+  setText("applyPeriodButton", t("apply"));
+  setText("closeDrawerButton", t("close"));
 }
 
 function populateYearSelect() {
@@ -330,10 +364,10 @@ function buildHistoryTable() {
     .map((row) => `
       <tr>
         <td>${row.year}</td>
-        <td>${state.language === "ar" ? row.institutionAr : row.institutionEn}</td>
-        <td>${row.percent}</td>
-        <td>${state.language === "ar" ? row.familyAr : row.familyEn}</td>
-        <td>${state.language === "ar" ? row.individualAr : row.individualEn}</td>
+        <td>${state.language === "ar" ? row.institution?.ar ?? "" : row.institution?.en ?? ""}</td>
+        <td>${row.rate ?? ""}</td>
+        <td>${state.language === "ar" ? row.family?.ar ?? "" : row.family?.en ?? ""}</td>
+        <td>${state.language === "ar" ? String(row.single?.ar ?? "").replace(/\n/g, "<br />") : String(row.single?.en ?? "").replace(/\n/g, "<br />")}</td>
       </tr>
     `)
     .join("");
@@ -425,19 +459,19 @@ function renderMarketChangeChart() {
   state.charts.marketChangeChart = new Chart(document.getElementById("marketChangeChart"), {
     type: "line",
     data: {
-      labels: dashboardData.marketTrend.labels,
+      labels: dashboardData.marketTrend.map((row) => state.language === "ar" ? row.periodAr : row.periodEn),
       datasets: [
         {
-          label: "% BFX",
-          data: dashboardData.marketTrend.bfx,
+          label: t("chartBfx"),
+          data: dashboardData.marketTrend.map((row) => row.bfx),
           borderColor: "#4d89df",
           borderWidth: 2,
           tension: 0.28,
           pointRadius: 0
         },
         {
-          label: "% MEB",
-          data: dashboardData.marketTrend.meb,
+          label: t("chartMebMarket"),
+          data: dashboardData.marketTrend.map((row) => row.meb),
           borderColor: "#f09a49",
           borderWidth: 2,
           tension: 0.28,
@@ -459,7 +493,7 @@ function renderHistoricalMeasuresChart() {
       datasets: [
         {
           label: t("chartFamily"),
-          data: dashboardData.historicalMeasures.map((row) => row.familyValue),
+          data: dashboardData.historicalMeasures.map((row) => parseFamilyValue(row)),
           backgroundColor: "#20416f",
           borderRadius: 12
         }
