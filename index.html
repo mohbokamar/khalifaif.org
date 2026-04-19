@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>منهجية خط الفقر في ليبيا | مؤسسة خليفة الدولية</title>
+    <meta
+      name="description"
+      content="لوحة تفاعلية تعرض خط الفقر المدقع والمطلق في ليبيا مع تحديثات ربع سنوية قابلة للإدارة."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="brand" href="#home">
+          <img class="brand__logo" id="brandLogo" src="./assets/logo-ar.png" alt="شعار المؤسسة" />
+        </a>
+
+        <nav class="main-nav">
+          <a href="#overview" data-copy data-copy-ar="نظرة عامة" data-copy-en="Overview">نظرة عامة</a>
+          <a href="#periodSection" data-copy data-copy-ar="الفترة" data-copy-en="Period">الفترة</a>
+          <a href="#indicators" data-copy data-copy-ar="المؤشرات" data-copy-en="Indicators">المؤشرات</a>
+          <a href="#calculator" data-copy data-copy-ar="الحاسبة" data-copy-en="Calculator">الحاسبة</a>
+          <a href="#analysis" data-copy data-copy-ar="التحليل" data-copy-en="Analysis">التحليل</a>
+          <a href="./admin.html" data-copy data-copy-ar="لوحة الأدمن" data-copy-en="Admin">لوحة الأدمن</a>
+        </nav>
+
+        <div class="header-actions">
+          <div class="lang-switch">
+            <button class="lang-button is-active" type="button" data-lang="ar">AR</button>
+            <button class="lang-button" type="button" data-lang="en">EN</button>
+          </div>
+          <button class="period-pill" id="currentPeriodPill" type="button">مارس 2026 - التقرير الأساسي</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <section class="hero fade-up" id="home">
+        <div class="hero__bg-shape hero__bg-shape--one"></div>
+        <div class="hero__bg-shape hero__bg-shape--two"></div>
+
+        <div class="hero__layout">
+          <aside class="hero-summary float-soft">
+            <div class="hero-summary__head">
+              <span class="eyebrow eyebrow--dark" data-copy data-copy-ar="المؤشرات الأساسية" data-copy-en="Core indicators">المؤشرات الأساسية</span>
+              <h2 data-copy data-copy-ar="خطوط الفقر المعتمدة" data-copy-en="Adopted poverty lines">خطوط الفقر المعتمدة</h2>
+            </div>
+
+            <div class="hero-metrics">
+              <article class="metric-box">
+                <span class="metric-box__label" data-copy data-copy-ar="خط الفقر المدقع" data-copy-en="Extreme poverty line">خط الفقر المدقع</span>
+                <strong class="metric-box__value" id="extremeValue">1,250</strong>
+                <span class="metric-box__meta" data-copy data-copy-ar="شهريًا / أسرة من 5 أفراد" data-copy-en="Monthly / Family of 5">شهريًا / أسرة من 5 أفراد</span>
+              </article>
+
+              <article class="metric-box">
+                <span class="metric-box__label" data-copy data-copy-ar="خط الفقر المطلق" data-copy-en="Absolute poverty line">خط الفقر المطلق</span>
+                <strong class="metric-box__value" id="absoluteValue">2,700</strong>
+                <span class="metric-box__meta" data-copy data-copy-ar="شهريًا / أسرة من 5 أفراد" data-copy-en="Monthly / Family of 5">شهريًا / أسرة من 5 أفراد</span>
+              </article>
+            </div>
+
+            <div class="hero-summary__note">
+              <strong data-copy data-copy-ar="الفترة المختارة" data-copy-en="Selected period">الفترة المختارة</strong>
+              <span id="periodHeading">2026 - الربع الأول</span>
+            </div>
+          </aside>
+
+          <section class="hero-copy">
+            <span class="eyebrow" data-copy data-copy-ar="تقرير أساسي - مارس 2026" data-copy-en="Core report - March 2026">تقرير أساسي - مارس 2026</span>
+            <h1>
+              <span data-copy data-copy-ar="منهجية" data-copy-en="Methodology">منهجية</span>
+              <span class="text-accent" data-copy data-copy-ar="خط الفقر" data-copy-en="Poverty Line">خط الفقر</span>
+              <br />
+              <span data-copy data-copy-ar="في ليبيا" data-copy-en="in Libya">في ليبيا</span>
+            </h1>
+            <p data-copy data-copy-ar="تعرض هذه الصفحة التقرير الأساسي لشهر مارس 2026، بينما تظهر بقية الفترات على أنها غير متوفرة حاليًا إلى أن يتم إدخالها لاحقًا من لوحة الأدمن." data-copy-en="This page displays the core March 2026 report. All other periods appear as currently unavailable until they are added later from the admin dashboard.">
+              تعرض هذه الصفحة التقرير الأساسي لشهر مارس 2026، بينما تظهر بقية الفترات على أنها غير متوفرة حاليًا إلى أن يتم إدخالها لاحقًا من لوحة الأدمن.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button button--accent" href="#indicators" id="browseIndicatorsButton">تصفح المؤشرات</a>
+              <button class="button button--ghost" id="openDrawerButton" type="button">تعديل الفترة</button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="section fade-up" id="overview">
+        <div class="section__inner">
+          <div class="section-heading">
+            <span class="eyebrow eyebrow--dark" data-copy data-copy-ar="نظرة عامة" data-copy-en="Overview">نظرة عامة</span>
+            <h2 data-copy data-copy-ar="قراءة مبسطة للتقرير الأساسي" data-copy-en="A simple view of the core report">قراءة مبسطة للتقرير الأساسي</h2>
+          </div>
+
+          <div class="message-grid">
+            <article class="info-card">
+              <h3 data-copy data-copy-ar="مرجع أساسي" data-copy-en="Core baseline">مرجع أساسي</h3>
+              <p data-copy data-copy-ar="الفترة الأساسية الحالية هي مارس 2026، وهي المرجع الرسمي الأول داخل اللوحة." data-copy-en="The current core baseline is March 2026, and it is the primary official reference on the dashboard.">
+                الفترة الأساسية الحالية هي مارس 2026، وهي المرجع الرسمي الأول داخل اللوحة.
+              </p>
+            </article>
+
+            <article class="info-card">
+              <h3 data-copy data-copy-ar="فترات لاحقة" data-copy-en="Future periods">فترات لاحقة</h3>
+              <p data-copy data-copy-ar="أي فترة أخرى ستظهر كغير متوفرة حاليًا إلى أن يتم إدخالها من الأدمن." data-copy-en="Any other period will appear as currently unavailable until entered from admin.">
+                أي فترة أخرى ستظهر كغير متوفرة حاليًا إلى أن يتم إدخالها من الأدمن.
+              </p>
+            </article>
+
+            <article class="info-card">
+              <h3 data-copy data-copy-ar="تعديل سهل" data-copy-en="Easy editing">تعديل سهل</h3>
+              <p data-copy data-copy-ar="واجهة الأدمن صارت مبسطة جدًا حتى يتمكن أي شخص من تحديث البيانات بدون معرفة برمجية." data-copy-en="The admin page is simplified so any person can update data without coding knowledge.">
+                واجهة الأدمن صارت مبسطة جدًا حتى يتمكن أي شخص من تحديث البيانات بدون معرفة برمجية.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section fade-up" id="periodSection">
+        <div class="section__inner">
+          <div class="card period-panel">
+            <div class="period-panel__copy">
+              <span class="eyebrow eyebrow--dark" data-copy data-copy-ar="الفترة الزمنية" data-copy-en="Period">الفترة الزمنية</span>
+              <h2 data-copy data-copy-ar="اختيار السنة والربع" data-copy-en="Choose year and quarter">اختيار السنة والربع</h2>
+              <p data-copy data-copy-ar="الاختيار يتم داخل نفس الصفحة، وعند عدم وجود بيانات ستظهر عبارة غير متوفر حاليًا بدل أرقام خاطئة أو فارغة." data-copy-en="Selection happens in the same page. If no data exists, the dashboard shows a currently unavailable state instead of wrong or empty figures.">
+                الاختيار يتم داخل نفس الصفحة، وعند عدم وجود بيانات ستظهر عبارة غير متوفر حاليًا بدل أرقام خاطئة أو فارغة.
+              </p>
+            </div>
+
+            <div class="period-panel__actions">
+              <div class="period-badge">
+                <span data-copy data-copy-ar="الفترة الحالية" data-copy-en="Current period">الفترة الحالية</span>
+                <strong id="currentPeriodLabel">مارس 2026 - التقرير الأساسي</strong>
+              </div>
+              <button class="button button--accent" id="openDrawerButtonSecondary" type="button">تعديل الفترة</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--soft fade-up" id="indicators">
+        <div class="section__inner">
+          <div class="section-heading">
+            <span class="eyebrow eyebrow--dark" data-copy data-copy-ar="المؤشرات" data-copy-en="Indicators">المؤشرات</span>
+            <h2 data-copy data-copy-ar="المؤشرات الرئيسية للفترة المختارة" data-copy-en="Main indicators for the selected period">المؤشرات الرئيسية للفترة المختارة</h2>
+          </div>
+
+          <div class="indicator-grid">
+            <article class="indicator-card indicator-card--primary">
+              <span data-copy data-copy-ar="خط الفقر المدقع" data-copy-en="Extreme poverty line">خط الفقر المدقع</span>
+              <strong id="kpiExtreme">1,250 د.ل</strong>
+              <p id="kpiExtremeChange">غير متوفر حاليًا</p>
+            </article>
+
+            <article class="indicator-card">
+              <span data-copy data-copy-ar="خط الفقر المطلق" data-copy-en="Absolute poverty line">خط الفقر المطلق</span>
+              <strong id="kpiAbsolute">2,700 د.ل</strong>
+              <p id="kpiAbsoluteChange">غير متوفر حاليًا</p>
+            </article>
+
+            <article class="indicator-card">
+              <span data-copy data-copy-ar="خط الفقر الدولي" data-copy-en="International poverty line">خط الفقر الدولي</span>
+              <strong id="kpiInternational">4,000 د.ل</strong>
+              <p data-copy data-copy-ar="يظهر ضمن التفاصيل فقط وليس ضمن البطاقات الأساسية." data-copy-en="Shown in details only, not as a primary card.">يظهر ضمن التفاصيل فقط وليس ضمن البطاقات الأساسية.</p>
+            </article>
+          </div>
+
+          <div class="card explainer-card">
+            <div class="card-head">
+              <span class="eyebrow eyebrow--dark" data-copy data-copy-ar="شرح بصري" data-copy-en="Visual explainer">شرح بصري</span>
+              <h3 data-copy data-copy-ar="مقارنة مستويات الفقر" data-copy-en="Poverty level comparison">مقارنة مستويات الفقر</h3>
+            </div>
+            <div class="chart-wrap chart-wrap--official">
+              <canvas id="povertyLevelsChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section fade-up" id="calculator">
+        <div class="section__inner calculator-grid">
+          <article class="card">
+            <div class="card-head">
+              <span class="eyebrow eyebrow--dark" data-copy data-copy-ar="حاسبة الأسرة" data-copy-en="Family calculator">حاسبة الأسرة</span>
+              <h3 data-copy data-copy-ar="تقدير حالة الدخل" data-copy-en="Estimate income status">تقدير حالة الدخل</h3>
+            </div>
+
+            <form class="family-form" id="familyForm">
+              <label class="field">
+                <span data-copy data-copy-ar="عدد أفراد الأسرة" data-copy-en="Family members">عدد أفراد الأسرة</span>
+                <input id="familyMembersInput" type="number" min="1" value="5" />
+              </label>
+
+              <label class="field">
+                <span data-copy data-copy-ar="الدخل الشهري للأسرة" data-copy-en="Monthly family income">الدخل الشهري للأسرة</span>
+                <input id="familyIncomeInput" type="number" min="0" value="3350" />
+              </label>
+
+              <label class="field">
+                <span data-copy data-copy-ar="سعر الدولار الحالي" data-copy-en="Current USD rate">سعر الدولار الحالي</span>
+                <input id="familyFxInput" type="number" step="0.01" min="0" value="7.25" />
+              </label>
+
+              <button class="button button--accent button--full" type="submit" data-copy data-copy-ar="احسب الوضع" data-copy-en="Calculate">احسب الوضع</button>
+            </form>
+          </article>
+
+          <article class="card calculator-result">
+            <div class="card-head">
+              <span class="eyebrow eyebrow--dark" data-copy data-copy-ar="النتيجة" data-copy-en="Result">النتيجة</span>
+              <h3 data-copy data-copy-ar="تصنيف الوضع المعيشي" data-copy-en="Living condition classification">تصنيف الوضع المعيشي</h3>
+            </div>
+            <div class="status-pill" id="familyStatusPill">دخل مستقر نسبيًا</div>
+            <div class="calculator-stats">
+              <div>
+                <span data-copy data-copy-ar="الخط المدقع للأسرة" data-copy-en="Extreme line for family">الخط المدقع للأسرة</span>
+                <strong id="calcExtremeThreshold">1,250 د.ل</strong>
+              </div>
+              <div>
+                <span data-copy data-copy-ar="الخط المطلق للأسرة" data-copy-en="Absolute line for family">الخط المطلق للأسرة</span>
+                <strong id="calcAbsoluteThreshold">2,700 د.ل</strong>
+              </div>
+              <div>
+                <span data-copy data-copy-ar="قيمة الدخل بالدولار" data-copy-en="Income in USD">قيمة الدخل بالدولار</span>
+                <strong id="calcUsdValue">$462</strong>
+              </div>
+            </div>
+            <p id="calcSummary">دخل الأسرة أعلى من خط الفقر المطلق للفترة الحالية.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section fade-up" id="analysis">
+        <div class="section__inner analysis-grid">
+          <article class="card">
+            <div class="card-head">
+              <span class="eyebrow eyebrow--dark" data-copy data-copy-ar="التتبع الزمني" data-copy-en="Timeline">التتبع الزمني</span>
+              <h3 data-copy data-copy-ar="خطا الفقر عبر الفترات المتوفرة" data-copy-en="Poverty lines across available periods">خطا الفقر عبر الفترات المتوفرة</h3>
+            </div>
+            <div class="chart-wrap chart-wrap--official">
+              <canvas id="linesChart"></canvas>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-head">
+              <span class="eyebrow eyebrow--dark" data-copy data-copy-ar="السوق والأسعار" data-copy-en="Market and prices">السوق والأسعار</span>
+              <h3 data-copy data-copy-ar="العوامل المؤثرة" data-copy-en="Key drivers">العوامل المؤثرة</h3>
+            </div>
+            <div class="chart-wrap chart-wrap--official chart-wrap--short">
+              <canvas id="marketChangeChart"></canvas>
+            </div>
+            <div class="stat-stack">
+              <div class="stat-item">
+                <span data-copy data-copy-ar="سعر الدولار" data-copy-en="USD rate">سعر الدولار</span>
+                <strong id="fxValue">7.25 د.ل</strong>
+              </div>
+              <div class="stat-item">
+                <span data-copy data-copy-ar="تكلفة السلة الأساسية" data-copy-en="Basic basket cost">تكلفة السلة الأساسية</span>
+                <strong id="basketCostValue">1,250 د.ل</strong>
+              </div>
+              <div class="stat-item">
+                <span data-copy data-copy-ar="متوسط دخل الأسرة" data-copy-en="Average family income">متوسط دخل الأسرة</span>
+                <strong id="familyIncomeValue">3,350 د.ل</strong>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--soft fade-up" id="history">
+        <div class="section__inner">
+          <div class="section-heading">
+            <span class="eyebrow eyebrow--dark" data-copy data-copy-ar="تاريخ المقاييس" data-copy-en="Historical measures">تاريخ المقاييس</span>
+            <h2 data-copy data-copy-ar="قراءة تاريخية مختصرة" data-copy-en="Short historical view">قراءة تاريخية مختصرة</h2>
+          </div>
+
+          <div class="history-grid">
+            <article class="card">
+              <div class="card-head">
+                <span class="eyebrow eyebrow--dark" data-copy data-copy-ar="رسم بياني" data-copy-en="Chart">رسم بياني</span>
+                <h3 data-copy data-copy-ar="تطور القيم المرجعية" data-copy-en="Reference values over time">تطور القيم المرجعية</h3>
+              </div>
+              <div class="chart-wrap chart-wrap--official chart-wrap--short">
+                <canvas id="historicalMeasuresChart"></canvas>
+              </div>
+            </article>
+
+            <article class="card table-card">
+              <div class="card-head">
+                <span class="eyebrow eyebrow--dark" data-copy data-copy-ar="جدول مرجعي" data-copy-en="Reference table">جدول مرجعي</span>
+                <h3 data-copy data-copy-ar="مقاييس الفقر منذ 2003" data-copy-en="Poverty measures since 2003">مقاييس الفقر منذ 2003</h3>
+              </div>
+              <div class="table-wrap">
+                <table class="history-table">
+                  <thead>
+                    <tr>
+                      <th data-copy data-copy-ar="السنة" data-copy-en="Year">السنة</th>
+                      <th data-copy data-copy-ar="المؤسسة" data-copy-en="Institution">المؤسسة</th>
+                      <th data-copy data-copy-ar="النسبة" data-copy-en="Rate">النسبة</th>
+                      <th data-copy data-copy-ar="عائلة 5 أفراد" data-copy-en="Family of 5">عائلة 5 أفراد</th>
+                      <th data-copy data-copy-ar="فرد واحد" data-copy-en="Single person">فرد واحد</th>
+                    </tr>
+                  </thead>
+                  <tbody id="historyTableBody"></tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--soft fade-up" id="regions">
+        <div class="section__inner">
+          <div class="section-heading">
+            <span class="eyebrow eyebrow--dark" data-copy data-copy-ar="المدن المرجعية" data-copy-en="Reference cities">المدن المرجعية</span>
+            <h2 data-copy data-copy-ar="طرابلس، بنغازي، سبها" data-copy-en="Tripoli, Benghazi, Sabha">طرابلس، بنغازي، سبها</h2>
+          </div>
+          <div class="region-grid" id="regionsGrid"></div>
+        </div>
+      </section>
+    </main>
+
+    <aside class="drawer" id="periodDrawer" aria-hidden="true">
+      <div class="drawer__backdrop" id="drawerBackdrop"></div>
+      <div class="drawer__panel" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+        <button class="drawer__close" type="button" id="closeDrawerButton">إغلاق</button>
+        <div class="drawer__head">
+          <span class="eyebrow eyebrow--dark" data-copy data-copy-ar="تعديل الفترة" data-copy-en="Edit period">تعديل الفترة</span>
+          <h2 id="drawerTitle">اختر السنة والربع</h2>
+          <p id="drawerDescription">الأرباع غير المتاحة ستظهر بحالة غير متوفر حاليًا.</p>
+        </div>
+
+        <form class="drawer__form" id="periodForm">
+          <label class="field">
+            <span id="yearLabel">السنة</span>
+            <select id="yearSelect"></select>
+          </label>
+
+          <div class="quarter-grid" id="quarterGrid"></div>
+
+          <button class="button button--accent button--full" type="submit" id="applyPeriodButton">تطبيق التعديل</button>
+        </form>
+      </div>
+    </aside>
+
+    <script src="./dashboard-data.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

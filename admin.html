@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --primary: #162d5a;
+        --accent: #ceac7e;
+        --muted: #eef2f7;
+        --border: rgba(18, 37, 73, 0.12);
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background: #f6f8fb;
+        color: #122549;
+        font-family: "Almarai", sans-serif;
+      }
+
+      .shell {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 24px 16px 40px;
+      }
+
+      .card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        box-shadow: 0 18px 40px rgba(0, 35, 102, 0.08);
+        padding: 22px;
+        margin-bottom: 16px;
+      }
+
+      .topbar,
+      .actions,
+      .lang-switch,
+      .grid,
+      .import-row {
+        display: grid;
+        gap: 12px;
+      }
+
+      .topbar {
+        grid-template-columns: 1fr auto;
+        align-items: center;
+      }
+
+      .lang-switch {
+        grid-auto-flow: column;
+      }
+
+      .lang-button,
+      .button {
+        min-height: 44px;
+        padding: 0 16px;
+        border: 0;
+        border-radius: 14px;
+        font: inherit;
+        font-weight: 800;
+        cursor: pointer;
+      }
+
+      .lang-button {
+        background: var(--muted);
+        color: var(--primary);
+      }
+
+      .lang-button.is-active {
+        background: var(--primary);
+        color: #fff;
+      }
+
+      .logo-wrap {
+        margin-top: 16px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .logo-wrap img {
+        display: block;
+        max-width: 140px;
+        width: 100%;
+        height: auto;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 8px 10px;
+        background: #fff;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .import-row {
+        grid-template-columns: minmax(0, 1fr) auto auto;
+        align-items: end;
+      }
+
+      .note {
+        margin-top: 12px;
+        padding: 12px 14px;
+        border-radius: 14px;
+        background: var(--muted);
+        color: #4f6285;
+        line-height: 1.8;
+      }
+
+      label {
+        display: grid;
+        gap: 8px;
+        font-weight: 700;
+      }
+
+      input,
+      select {
+        min-height: 48px;
+        padding: 12px 14px;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: #fff;
+        font: inherit;
+      }
+
+      .button {
+        background: var(--accent);
+        color: var(--primary);
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .button--dark {
+        background: var(--primary);
+        color: #fff;
+      }
+
+      .button--ghost {
+        background: var(--muted);
+        color: var(--primary);
+      }
+
+      .actions {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .status {
+        padding: 12px 14px;
+        border-radius: 14px;
+        background: #edf6ff;
+        color: #1f467f;
+        font-weight: 700;
+      }
+
+      @media (max-width: 720px) {
+        .topbar,
+        .grid,
+        .actions,
+        .import-row {
+          grid-template-columns: 1fr;
+        }
+
+        .logo-wrap img {
+          max-width: 112px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="shell">
+      <section class="card">
+        <div class="topbar">
+          <div>
+            <h1 id="pageTitle">Admin</h1>
+            <p id="pageDesc">Edit dashboard values</p>
+            <div class="note" id="adminNote">Only numeric values and visibility are editable here.</div>
+          </div>
+          <div class="lang-switch">
+            <button class="lang-button is-active" type="button" data-lang="ar">AR</button>
+            <button class="lang-button" type="button" data-lang="en">EN</button>
+          </div>
+        </div>
+        <div class="logo-wrap">
+          <img id="logoImage" src="./assets/logo-ar.png" alt="Logo" />
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="grid">
+          <label>
+            <span id="periodLabel">Period</span>
+            <select id="periodSelect"></select>
+          </label>
+          <label>
+            <span id="availableLabel">Visibility</span>
+            <select id="availableSelect">
+              <option value="true">Show</option>
+              <option value="false">Hide</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="grid">
+          <label>
+            <span id="extremeLabel">Extreme poverty line</span>
+            <input id="extremeInput" type="number" />
+          </label>
+          <label>
+            <span id="absoluteLabel">Absolute poverty line</span>
+            <input id="absoluteInput" type="number" />
+          </label>
+        </div>
+
+        <div class="grid">
+          <label>
+            <span id="internationalLabel">International poverty line</span>
+            <input id="internationalInput" type="number" />
+          </label>
+          <label>
+            <span id="fxLabel">USD rate</span>
+            <input id="fxInput" type="number" step="0.01" />
+          </label>
+        </div>
+
+        <div class="grid">
+          <label>
+            <span id="basketLabel">Basic basket cost</span>
+            <input id="basketInput" type="number" />
+          </label>
+          <label>
+            <span id="incomeLabel">Average family income</span>
+            <input id="incomeInput" type="number" />
+          </label>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2 id="regionsTitle">Reference cities</h2>
+        <div class="grid">
+          <label>
+            <span id="tripoliBasketLabel">Tripoli - basket</span>
+            <input id="tripoliBasket" type="number" />
+          </label>
+          <label>
+            <span id="tripoliAbsoluteLabel">Tripoli - absolute</span>
+            <input id="tripoliAbsolute" type="number" />
+          </label>
+          <label>
+            <span id="benghaziBasketLabel">Benghazi - basket</span>
+            <input id="benghaziBasket" type="number" />
+          </label>
+          <label>
+            <span id="benghaziAbsoluteLabel">Benghazi - absolute</span>
+            <input id="benghaziAbsolute" type="number" />
+          </label>
+          <label>
+            <span id="sabhaBasketLabel">Sabha - basket</span>
+            <input id="sabhaBasket" type="number" />
+          </label>
+          <label>
+            <span id="sabhaAbsoluteLabel">Sabha - absolute</span>
+            <input id="sabhaAbsolute" type="number" />
+          </label>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="actions">
+          <button class="button" id="saveButton" type="button">Save in page</button>
+          <button class="button button--dark" id="saveLocalButton" type="button">Save locally</button>
+          <button class="button button--ghost" id="downloadButton" type="button">Download JSON</button>
+        </div>
+        <div class="import-row" style="margin-top:12px;">
+          <label>
+            <span id="fileLabel">Choose Excel file</span>
+            <input id="excelFileInput" type="file" accept=".xlsx,.xls" />
+          </label>
+          <button class="button button--dark" id="importExcelButton" type="button">Import Excel</button>
+          <a class="button button--ghost" href="./dashboard-data.xlsx" id="templateButton">Open Excel file</a>
+        </div>
+        <div class="actions" style="margin-top:12px;">
+          <button class="button button--ghost" id="resetLocalButton" type="button">Reset local copy</button>
+          <a class="button button--ghost" href="./index.html" id="backButton">Back to dashboard</a>
+          <div class="status" id="statusBox">Ready</div>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="./dashboard-data.js"></script>
+    <script>
+      const STORAGE_KEY = "kif-dashboard-data";
+      const LANG_KEY = "kif-dashboard-lang";
+
+      let source = null;
+      let currentLang = localStorage.getItem(LANG_KEY) || "ar";
+
+      const ui = {
+        ar: {
+          pageTitle: "\u0644\u0648\u062d\u0629 \u0623\u062f\u0645\u0646 \u0645\u0628\u0633\u0637\u0629",
+          pageDesc: "\u0647\u0630\u0647 \u0627\u0644\u0635\u0641\u062d\u0629 \u0645\u062e\u0635\u0635\u0629 \u0644\u062a\u0639\u062f\u064a\u0644 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 \u0648\u0627\u0644\u062a\u062d\u0643\u0645 \u0641\u064a \u0627\u0644\u0638\u0647\u0648\u0631 \u0641\u064a \u0627\u0644\u0645\u0648\u0642\u0639.",
+          adminNote: "\u0627\u0644\u0646\u0635\u0648\u0635 \u062b\u0627\u0628\u062a\u0629 \u062f\u0627\u062e\u0644 \u0627\u0644\u0645\u0648\u0642\u0639. \u0647\u0646\u0627 \u062a\u0639\u062f\u0644 \u0627\u0644\u0623\u0631\u0642\u0627\u0645 \u0648\u062d\u0627\u0644\u0629 \u0627\u0644\u0638\u0647\u0648\u0631 \u0641\u0642\u0637.",
+          periodLabel: "\u0627\u0644\u0641\u062a\u0631\u0629",
+          availableLabel: "\u0627\u0644\u0638\u0647\u0648\u0631 \u0641\u064a \u0627\u0644\u0645\u0648\u0642\u0639",
+          extremeLabel: "\u062e\u0637 \u0627\u0644\u0641\u0642\u0631 \u0627\u0644\u0645\u062f\u0642\u0639",
+          absoluteLabel: "\u062e\u0637 \u0627\u0644\u0641\u0642\u0631 \u0627\u0644\u0645\u0637\u0644\u0642",
+          internationalLabel: "\u062e\u0637 \u0627\u0644\u0641\u0642\u0631 \u0627\u0644\u062f\u0648\u0644\u064a",
+          fxLabel: "\u0633\u0639\u0631 \u0627\u0644\u062f\u0648\u0644\u0627\u0631",
+          basketLabel: "\u062a\u0643\u0644\u0641\u0629 \u0627\u0644\u0633\u0644\u0629 \u0627\u0644\u0623\u0633\u0627\u0633\u064a\u0629",
+          incomeLabel: "\u0645\u062a\u0648\u0633\u0637 \u062f\u062e\u0644 \u0627\u0644\u0623\u0633\u0631\u0629",
+          regionsTitle: "\u0627\u0644\u0645\u062f\u0646 \u0627\u0644\u0645\u0631\u062c\u0639\u064a\u0629",
+          tripoliBasketLabel: "\u0637\u0631\u0627\u0628\u0644\u0633 - \u0627\u0644\u0633\u0644\u0629",
+          tripoliAbsoluteLabel: "\u0637\u0631\u0627\u0628\u0644\u0633 - \u0627\u0644\u0645\u0637\u0644\u0642",
+          benghaziBasketLabel: "\u0628\u0646\u063a\u0627\u0632\u064a - \u0627\u0644\u0633\u0644\u0629",
+          benghaziAbsoluteLabel: "\u0628\u0646\u063a\u0627\u0632\u064a - \u0627\u0644\u0645\u0637\u0644\u0642",
+          sabhaBasketLabel: "\u0633\u0628\u0647\u0627 - \u0627\u0644\u0633\u0644\u0629",
+          sabhaAbsoluteLabel: "\u0633\u0628\u0647\u0627 - \u0627\u0644\u0645\u0637\u0644\u0642",
+          saveButton: "\u062d\u0641\u0638 \u062f\u0627\u062e\u0644 \u0627\u0644\u0635\u0641\u062d\u0629",
+          saveLocalButton: "\u062d\u0641\u0638 \u0645\u062d\u0644\u064a",
+          downloadButton: "\u062a\u0646\u0632\u064a\u0644 JSON",
+          resetLocalButton: "\u062d\u0630\u0641 \u0627\u0644\u0646\u0633\u062e\u0629 \u0627\u0644\u0645\u062d\u0644\u064a\u0629",
+          backButton: "\u0627\u0644\u0631\u062c\u0648\u0639 \u0644\u0644\u0639\u0631\u0636",
+          importExcelButton: "\u0627\u0633\u062a\u064a\u0631\u0627\u062f Excel",
+          templateButton: "\u0641\u062a\u062d \u0645\u0644\u0641 Excel",
+          fileLabel: "\u0627\u062e\u062a\u0631 \u0645\u0644\u0641 Excel",
+          availableYes: "\u0625\u0638\u0647\u0627\u0631 \u0641\u064a \u0627\u0644\u0645\u0648\u0642\u0639",
+          availableNo: "\u0625\u062e\u0641\u0627\u0621 \u0645\u0646 \u0627\u0644\u0645\u0648\u0642\u0639",
+          saved: "\u062a\u0645 \u062d\u0641\u0638 \u0627\u0644\u062a\u0639\u062f\u064a\u0644\u0627\u062a \u062f\u0627\u062e\u0644 \u0627\u0644\u0635\u0641\u062d\u0629",
+          localSaved: "\u062a\u0645 \u0627\u0644\u062d\u0641\u0638 \u0645\u062d\u0644\u064a\u064b\u0627",
+          localReset: "\u062a\u0645 \u062d\u0630\u0641 \u0627\u0644\u0646\u0633\u062e\u0629 \u0627\u0644\u0645\u062d\u0644\u064a\u0629",
+          downloaded: "\u062a\u0645 \u062a\u0646\u0632\u064a\u0644 \u0645\u0644\u0641 JSON",
+          importSuccess: "\u062a\u0645 \u0627\u0633\u062a\u064a\u0631\u0627\u062f \u0645\u0644\u0641 Excel \u0628\u0646\u062c\u0627\u062d",
+          chooseExcel: "\u0627\u062e\u062a\u0631 \u0645\u0644\u0641 Excel \u0623\u0648\u0644\u0627\u064b"
+        },
+        en: {
+          pageTitle: "Simple Admin Dashboard",
+          pageDesc: "This page is for numeric values and website visibility only.",
+          adminNote: "Titles and descriptive text stay fixed in the website. Edit only numbers and visibility here.",
+          periodLabel: "Period",
+          availableLabel: "Website visibility",
+          extremeLabel: "Extreme poverty line",
+          absoluteLabel: "Absolute poverty line",
+          internationalLabel: "International poverty line",
+          fxLabel: "USD rate",
+          basketLabel: "Basic basket cost",
+          incomeLabel: "Average family income",
+          regionsTitle: "Reference cities",
+          tripoliBasketLabel: "Tripoli - basket",
+          tripoliAbsoluteLabel: "Tripoli - absolute",
+          benghaziBasketLabel: "Benghazi - basket",
+          benghaziAbsoluteLabel: "Benghazi - absolute",
+          sabhaBasketLabel: "Sabha - basket",
+          sabhaAbsoluteLabel: "Sabha - absolute",
+          saveButton: "Save in page",
+          saveLocalButton: "Save locally",
+          downloadButton: "Download JSON",
+          resetLocalButton: "Reset local copy",
+          backButton: "Back to dashboard",
+          importExcelButton: "Import Excel",
+          templateButton: "Open Excel file",
+          fileLabel: "Choose Excel file",
+          availableYes: "Show on website",
+          availableNo: "Hide from website",
+          saved: "Changes saved in the page",
+          localSaved: "Saved locally",
+          localReset: "Local copy removed",
+          downloaded: "JSON downloaded",
+          importSuccess: "Excel file imported successfully",
+          chooseExcel: "Choose an Excel file first"
+        }
+      };
+
+      const ids = [
+        "pageTitle","pageDesc","adminNote","periodLabel","availableLabel","extremeLabel",
+        "absoluteLabel","internationalLabel","fxLabel","basketLabel","incomeLabel","regionsTitle",
+        "tripoliBasketLabel","tripoliAbsoluteLabel","benghaziBasketLabel","benghaziAbsoluteLabel",
+        "sabhaBasketLabel","sabhaAbsoluteLabel","saveButton","saveLocalButton","downloadButton",
+        "resetLocalButton","backButton","importExcelButton","templateButton","fileLabel"
+      ];
+
+      const periodSelect = document.getElementById("periodSelect");
+
+      function applyLang() {
+        const copy = ui[currentLang];
+        document.documentElement.lang = currentLang;
+        document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
+        document.getElementById("logoImage").src = currentLang === "ar" ? "./assets/logo-ar.png" : "./assets/logo-en.png";
+        ids.forEach((id) => {
+          const node = document.getElementById(id);
+          if (node) {
+            node.textContent = copy[id];
+          }
+        });
+
+        document.querySelectorAll("[data-lang]").forEach((button) => {
+          button.classList.toggle("is-active", button.dataset.lang === currentLang);
+        });
+
+        const availableSelect = document.getElementById("availableSelect");
+        availableSelect.options[0].text = copy.availableYes;
+        availableSelect.options[1].text = copy.availableNo;
+      }
+
+      function setStatus(text) {
+        document.getElementById("statusBox").textContent = text;
+      }
+
+      function loadOptions() {
+        const sortedKeys = Object.keys(source.periods)
+          .sort((left, right) => {
+            const [leftYear, leftQuarter] = left.split("-");
+            const [rightYear, rightQuarter] = right.split("-");
+            const quarterRank = { Q1: 1, Q2: 2, Q3: 3, Q4: 4 };
+
+            if (Number(leftYear) !== Number(rightYear)) {
+              return Number(rightYear) - Number(leftYear);
+            }
+
+            return quarterRank[rightQuarter] - quarterRank[leftQuarter];
+          });
+
+        periodSelect.innerHTML = sortedKeys.map((key) => `<option value="${key}">${key}</option>`).join("");
+        loadPeriod();
+      }
+
+      function loadPeriod() {
+        const period = source.periods[periodSelect.value];
+        document.getElementById("availableSelect").value = String(period.available);
+        document.getElementById("extremeInput").value = period.extreme ?? "";
+        document.getElementById("absoluteInput").value = period.absolute ?? "";
+        document.getElementById("internationalInput").value = period.international ?? "";
+        document.getElementById("fxInput").value = period.fx ?? "";
+        document.getElementById("basketInput").value = period.basketCost ?? "";
+        document.getElementById("incomeInput").value = period.familyIncome ?? "";
+
+        const tripoli = period.regions[0] || {};
+        const benghazi = period.regions[1] || {};
+        const sabha = period.regions[2] || {};
+
+        document.getElementById("tripoliBasket").value = tripoli.basket ?? "";
+        document.getElementById("tripoliAbsolute").value = tripoli.absolute ?? "";
+        document.getElementById("benghaziBasket").value = benghazi.basket ?? "";
+        document.getElementById("benghaziAbsolute").value = benghazi.absolute ?? "";
+        document.getElementById("sabhaBasket").value = sabha.basket ?? "";
+        document.getElementById("sabhaAbsolute").value = sabha.absolute ?? "";
+      }
+
+      function savePeriod() {
+        const period = source.periods[periodSelect.value];
+        const extreme = document.getElementById("extremeInput").value;
+        const absolute = document.getElementById("absoluteInput").value;
+
+        period.available = document.getElementById("availableSelect").value === "true";
+        period.extreme = extreme ? Number(extreme) : null;
+        period.absolute = absolute ? Number(absolute) : null;
+        period.international = document.getElementById("internationalInput").value ? Number(document.getElementById("internationalInput").value) : null;
+        period.fx = document.getElementById("fxInput").value ? Number(document.getElementById("fxInput").value) : null;
+        period.basketCost = document.getElementById("basketInput").value ? Number(document.getElementById("basketInput").value) : null;
+        period.familyIncome = document.getElementById("incomeInput").value ? Number(document.getElementById("incomeInput").value) : null;
+        period.regions = period.available ? [
+          { nameAr: "\u0637\u0631\u0627\u0628\u0644\u0633", nameEn: "Tripoli", basket: Number(document.getElementById("tripoliBasket").value || 0), extreme: Number(document.getElementById("tripoliBasket").value || 0), absolute: Number(document.getElementById("tripoliAbsolute").value || 0) },
+          { nameAr: "\u0628\u0646\u063a\u0627\u0632\u064a", nameEn: "Benghazi", basket: Number(document.getElementById("benghaziBasket").value || 0), extreme: Number(document.getElementById("benghaziBasket").value || 0), absolute: Number(document.getElementById("benghaziAbsolute").value || 0) },
+          { nameAr: "\u0633\u0628\u0647\u0627", nameEn: "Sabha", basket: Number(document.getElementById("sabhaBasket").value || 0), extreme: Number(document.getElementById("sabhaBasket").value || 0), absolute: Number(document.getElementById("sabhaAbsolute").value || 0) }
+        ] : [];
+
+        setStatus(ui[currentLang].saved);
+      }
+
+      function saveLocal() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(source));
+        setStatus(ui[currentLang].localSaved);
+      }
+
+      function resetLocal() {
+        localStorage.removeItem(STORAGE_KEY);
+        localStorage.removeItem(LANG_KEY);
+        setStatus(ui[currentLang].localReset);
+      }
+
+      function downloadJson() {
+        const blob = new Blob([JSON.stringify(source, null, 2)], { type: "application/json" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "dashboard-data.json";
+        a.click();
+        URL.revokeObjectURL(url);
+        setStatus(ui[currentLang].downloaded);
+      }
+
+      function importExcelWorkbook(workbook) {
+        const periodsSheet = workbook.Sheets["Periods"];
+        const regionsSheet = workbook.Sheets["Regions"];
+        const historySheet = workbook.Sheets["History"];
+        const marketSheet = workbook.Sheets["MarketTrend"];
+
+        if (!periodsSheet || !regionsSheet) {
+          throw new Error("Missing required sheets");
+        }
+
+        const periodsRows = XLSX.utils.sheet_to_json(periodsSheet, { defval: null });
+        const regionsRows = XLSX.utils.sheet_to_json(regionsSheet, { defval: null });
+        const historyRows = historySheet ? XLSX.utils.sheet_to_json(historySheet, { defval: null }) : [];
+        const marketRows = marketSheet ? XLSX.utils.sheet_to_json(marketSheet, { defval: null }) : [];
+
+        periodsRows.forEach((row) => {
+          const period = source.periods[row.period_key];
+          if (!period) return;
+          period.available = Number(row.visible) === 1;
+          period.year = Number(row.year);
+          period.quarter = row.quarter;
+          period.labelAr = row.label_ar || period.labelAr;
+          period.labelEn = row.label_en || period.labelEn;
+          period.extreme = row.extreme == null ? null : Number(row.extreme);
+          period.absolute = row.absolute == null ? null : Number(row.absolute);
+          period.international = row.international == null ? null : Number(row.international);
+          period.fx = row.fx == null ? null : Number(row.fx);
+          period.basketCost = row.basket_cost == null ? null : Number(row.basket_cost);
+          period.familyIncome = row.family_income == null ? null : Number(row.family_income);
+          period.regions = [];
+        });
+
+        regionsRows.forEach((row) => {
+          const period = source.periods[row.period_key];
+          if (!period) return;
+          period.regions.push({
+            nameAr: row.city_ar,
+            nameEn: row.city_en,
+            basket: row.basket == null ? null : Number(row.basket),
+            extreme: row.extreme == null ? null : Number(row.extreme),
+            absolute: row.absolute == null ? null : Number(row.absolute)
+          });
+        });
+
+        if (historyRows.length) {
+          source.historicalMeasures = historyRows.map((row) => ({
+            year: String(row.year ?? ""),
+            institutionAr: row.institution_ar,
+            institutionEn: row.institution_en,
+            percent: row.percent,
+            familyAr: row.family_ar,
+            familyEn: row.family_en,
+            familyValue: row.family_value == null ? null : Number(row.family_value),
+            individualAr: row.individual_ar,
+            individualEn: row.individual_en
+          }));
+        }
+
+        if (marketRows.length) {
+          source.marketTrend = {
+            labels: marketRows.map((row) => row.label),
+            bfx: marketRows.map((row) => Number(row.bfx ?? 0)),
+            meb: marketRows.map((row) => Number(row.meb ?? 0))
+          };
+        }
+      }
+
+      async function handleExcelImport() {
+        const file = document.getElementById("excelFileInput").files[0];
+        if (!file) {
+          setStatus(ui[currentLang].chooseExcel);
+          return;
+        }
+
+        const buffer = await file.arrayBuffer();
+        const workbook = XLSX.read(buffer, { type: "array" });
+        importExcelWorkbook(workbook);
+        loadOptions();
+        setStatus(ui[currentLang].importSuccess);
+      }
+
+      async function init() {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        source = saved ? JSON.parse(saved) : (window.DASHBOARD_DATA || await (await fetch("./dashboard-data.json")).json());
+        applyLang();
+        loadOptions();
+
+        document.querySelectorAll("[data-lang]").forEach((button) => {
+          button.addEventListener("click", () => {
+            currentLang = button.dataset.lang;
+            localStorage.setItem(LANG_KEY, currentLang);
+            applyLang();
+          });
+        });
+
+        periodSelect.addEventListener("change", loadPeriod);
+        document.getElementById("saveButton").addEventListener("click", savePeriod);
+        document.getElementById("saveLocalButton").addEventListener("click", saveLocal);
+        document.getElementById("resetLocalButton").addEventListener("click", resetLocal);
+        document.getElementById("downloadButton").addEventListener("click", downloadJson);
+        document.getElementById("importExcelButton").addEventListener("click", handleExcelImport);
+      }
+
+      init();
+    </script>
+  </body>
+</html>
