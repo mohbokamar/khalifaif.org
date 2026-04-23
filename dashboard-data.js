@@ -10,11 +10,11 @@ window.DASHBOARD_DATA = {
   "periods": {
     "2026-Q1": {
       "available": true,
-      "labelAr": "???? 2026 - ??????? ???????",
+      "labelAr": "مارس 2026 - التقرير الأساسي",
       "labelEn": "March 2026 - Core Report",
       "year": 2026,
       "quarter": "Q1",
-      "quarterLabelAr": "\u0627\u0644\u0631\u0628\u0639 \u0627\u0644\u0623\u0648\u0644",
+      "quarterLabelAr": "الربع الأول",
       "quarterLabelEn": "Q1",
       "extreme": 1250,
       "absolute": 2700,
@@ -24,21 +24,21 @@ window.DASHBOARD_DATA = {
       "familyIncome": 3350,
       "regions": [
         {
-          "nameAr": "\u0637\u0631\u0627\u0628\u0644\u0633",
+          "nameAr": "طرابلس",
           "nameEn": "Tripoli",
           "basket": 1180,
           "extreme": 1180,
           "absolute": 2580
         },
         {
-          "nameAr": "\u0628\u0646\u063a\u0627\u0632\u064a",
+          "nameAr": "بنغازي",
           "nameEn": "Benghazi",
           "basket": 1210,
           "extreme": 1210,
           "absolute": 2625
         },
         {
-          "nameAr": "\u0633\u0628\u0647\u0627",
+          "nameAr": "سبها",
           "nameEn": "Sabha",
           "basket": 1250,
           "extreme": 1250,
@@ -48,785 +48,367 @@ window.DASHBOARD_DATA = {
     },
     "2026-Q2": {
       "available": false,
-      "labelAr": "????? 2026 - ????? ??????",
+      "labelAr": "يونيو 2026 - الربع الثاني",
       "labelEn": "June 2026 - Q2",
       "year": 2026,
       "quarter": "Q2",
-      "quarterLabelAr": "\u0627\u0644\u0631\u0628\u0639 \u0627\u0644\u062b\u0627\u0646\u064a",
+      "quarterLabelAr": "الربع الثاني",
       "quarterLabelEn": "Q2",
-      "extreme": 1292,
-      "absolute": 2785,
-      "international": 4110,
-      "fx": 7.39,
-      "basketCost": 1292,
-      "familyIncome": 3420,
-      "regions": [
-        {
-          "nameAr": "\u0637\u0631\u0627\u0628\u0644\u0633",
-          "nameEn": "Tripoli",
-          "basket": 1222,
-          "extreme": 1222,
-          "absolute": 2665
-        },
-        {
-          "nameAr": "\u0628\u0646\u063a\u0627\u0632\u064a",
-          "nameEn": "Benghazi",
-          "basket": 1252,
-          "extreme": 1252,
-          "absolute": 2710
-        },
-        {
-          "nameAr": "\u0633\u0628\u0647\u0627",
-          "nameEn": "Sabha",
-          "basket": 1292,
-          "extreme": 1292,
-          "absolute": 2785
-        }
-      ]
+      "extreme": null,
+      "absolute": null,
+      "international": null,
+      "fx": null,
+      "basketCost": null,
+      "familyIncome": null,
+      "regions": []
     },
     "2026-Q3": {
       "available": false,
-      "labelAr": "?????? 2026 - ????? ??????",
+      "labelAr": "سبتمبر 2026 - الربع الثالث",
       "labelEn": "September 2026 - Q3",
       "year": 2026,
       "quarter": "Q3",
-      "quarterLabelAr": "\u0627\u0644\u0631\u0628\u0639 \u0627\u0644\u062b\u0627\u0644\u062b",
+      "quarterLabelAr": "الربع الثالث",
       "quarterLabelEn": "Q3",
-      "extreme": 1334,
-      "absolute": 2870,
-      "international": 4220,
-      "fx": 7.53,
-      "basketCost": 1334,
-      "familyIncome": 3490,
-      "regions": [
-        {
-          "nameAr": "\u0637\u0631\u0627\u0628\u0644\u0633",
-          "nameEn": "Tripoli",
-          "basket": 1264,
-          "extreme": 1264,
-          "absolute": 2750
-        },
-        {
-          "nameAr": "\u0628\u0646\u063a\u0627\u0632\u064a",
-          "nameEn": "Benghazi",
-          "basket": 1294,
-          "extreme": 1294,
-          "absolute": 2795
-        },
-        {
-          "nameAr": "\u0633\u0628\u0647\u0627",
-          "nameEn": "Sabha",
-          "basket": 1334,
-          "extreme": 1334,
-          "absolute": 2870
-        }
-      ]
+      "extreme": null,
+      "absolute": null,
+      "international": null,
+      "fx": null,
+      "basketCost": null,
+      "familyIncome": null,
+      "regions": []
     },
     "2026-Q4": {
       "available": false,
-      "labelAr": "?????? 2026 - ????? ??????",
+      "labelAr": "ديسمبر 2026 - الربع الرابع",
       "labelEn": "December 2026 - Q4",
       "year": 2026,
       "quarter": "Q4",
-      "quarterLabelAr": "\u0627\u0644\u0631\u0628\u0639 \u0627\u0644\u0631\u0627\u0628\u0639",
+      "quarterLabelAr": "الربع الرابع",
       "quarterLabelEn": "Q4",
-      "extreme": 1376,
-      "absolute": 2955,
-      "international": 4330,
-      "fx": 7.67,
-      "basketCost": 1376,
-      "familyIncome": 3560,
-      "regions": [
-        {
-          "nameAr": "\u0637\u0631\u0627\u0628\u0644\u0633",
-          "nameEn": "Tripoli",
-          "basket": 1306,
-          "extreme": 1306,
-          "absolute": 2835
-        },
-        {
-          "nameAr": "\u0628\u0646\u063a\u0627\u0632\u064a",
-          "nameEn": "Benghazi",
-          "basket": 1336,
-          "extreme": 1336,
-          "absolute": 2880
-        },
-        {
-          "nameAr": "\u0633\u0628\u0647\u0627",
-          "nameEn": "Sabha",
-          "basket": 1376,
-          "extreme": 1376,
-          "absolute": 2955
-        }
-      ]
+      "extreme": null,
+      "absolute": null,
+      "international": null,
+      "fx": null,
+      "basketCost": null,
+      "familyIncome": null,
+      "regions": []
     },
     "2027-Q1": {
       "available": false,
-      "labelAr": "???? 2027 - ????? ?????",
+      "labelAr": "مارس 2027 - الربع الأول",
       "labelEn": "March 2027 - Q1",
       "year": 2027,
       "quarter": "Q1",
-      "quarterLabelAr": "\u0627\u0644\u0631\u0628\u0639 \u0627\u0644\u0623\u0648\u0644",
+      "quarterLabelAr": "الربع الأول",
       "quarterLabelEn": "Q1",
-      "extreme": 1320,
-      "absolute": 2860,
-      "international": 4180,
-      "fx": 7.62,
-      "basketCost": 1320,
-      "familyIncome": 3510,
-      "regions": [
-        {
-          "nameAr": "\u0637\u0631\u0627\u0628\u0644\u0633",
-          "nameEn": "Tripoli",
-          "basket": 1250,
-          "extreme": 1250,
-          "absolute": 2740
-        },
-        {
-          "nameAr": "\u0628\u0646\u063a\u0627\u0632\u064a",
-          "nameEn": "Benghazi",
-          "basket": 1280,
-          "extreme": 1280,
-          "absolute": 2785
-        },
-        {
-          "nameAr": "\u0633\u0628\u0647\u0627",
-          "nameEn": "Sabha",
-          "basket": 1320,
-          "extreme": 1320,
-          "absolute": 2860
-        }
-      ]
+      "extreme": null,
+      "absolute": null,
+      "international": null,
+      "fx": null,
+      "basketCost": null,
+      "familyIncome": null,
+      "regions": []
     },
     "2027-Q2": {
       "available": false,
-      "labelAr": "????? 2027 - ????? ??????",
+      "labelAr": "يونيو 2027 - الربع الثاني",
       "labelEn": "June 2027 - Q2",
       "year": 2027,
       "quarter": "Q2",
-      "quarterLabelAr": "\u0627\u0644\u0631\u0628\u0639 \u0627\u0644\u062b\u0627\u0646\u064a",
+      "quarterLabelAr": "الربع الثاني",
       "quarterLabelEn": "Q2",
-      "extreme": 1362,
-      "absolute": 2945,
-      "international": 4290,
-      "fx": 7.76,
-      "basketCost": 1362,
-      "familyIncome": 3580,
-      "regions": [
-        {
-          "nameAr": "\u0637\u0631\u0627\u0628\u0644\u0633",
-          "nameEn": "Tripoli",
-          "basket": 1292,
-          "extreme": 1292,
-          "absolute": 2825
-        },
-        {
-          "nameAr": "\u0628\u0646\u063a\u0627\u0632\u064a",
-          "nameEn": "Benghazi",
-          "basket": 1322,
-          "extreme": 1322,
-          "absolute": 2870
-        },
-        {
-          "nameAr": "\u0633\u0628\u0647\u0627",
-          "nameEn": "Sabha",
-          "basket": 1362,
-          "extreme": 1362,
-          "absolute": 2945
-        }
-      ]
+      "extreme": null,
+      "absolute": null,
+      "international": null,
+      "fx": null,
+      "basketCost": null,
+      "familyIncome": null,
+      "regions": []
     },
     "2027-Q3": {
       "available": false,
-      "labelAr": "?????? 2027 - ????? ??????",
+      "labelAr": "سبتمبر 2027 - الربع الثالث",
       "labelEn": "September 2027 - Q3",
       "year": 2027,
       "quarter": "Q3",
-      "quarterLabelAr": "\u0627\u0644\u0631\u0628\u0639 \u0627\u0644\u062b\u0627\u0644\u062b",
+      "quarterLabelAr": "الربع الثالث",
       "quarterLabelEn": "Q3",
-      "extreme": 1404,
-      "absolute": 3030,
-      "international": 4400,
-      "fx": 7.9,
-      "basketCost": 1404,
-      "familyIncome": 3650,
-      "regions": [
-        {
-          "nameAr": "\u0637\u0631\u0627\u0628\u0644\u0633",
-          "nameEn": "Tripoli",
-          "basket": 1334,
-          "extreme": 1334,
-          "absolute": 2910
-        },
-        {
-          "nameAr": "\u0628\u0646\u063a\u0627\u0632\u064a",
-          "nameEn": "Benghazi",
-          "basket": 1364,
-          "extreme": 1364,
-          "absolute": 2955
-        },
-        {
-          "nameAr": "\u0633\u0628\u0647\u0627",
-          "nameEn": "Sabha",
-          "basket": 1404,
-          "extreme": 1404,
-          "absolute": 3030
-        }
-      ]
+      "extreme": null,
+      "absolute": null,
+      "international": null,
+      "fx": null,
+      "basketCost": null,
+      "familyIncome": null,
+      "regions": []
     },
     "2027-Q4": {
       "available": false,
-      "labelAr": "?????? 2027 - ????? ??????",
+      "labelAr": "ديسمبر 2027 - الربع الرابع",
       "labelEn": "December 2027 - Q4",
       "year": 2027,
       "quarter": "Q4",
-      "quarterLabelAr": "\u0627\u0644\u0631\u0628\u0639 \u0627\u0644\u0631\u0627\u0628\u0639",
+      "quarterLabelAr": "الربع الرابع",
       "quarterLabelEn": "Q4",
-      "extreme": 1446,
-      "absolute": 3115,
-      "international": 4510,
-      "fx": 8.04,
-      "basketCost": 1446,
-      "familyIncome": 3720,
-      "regions": [
-        {
-          "nameAr": "\u0637\u0631\u0627\u0628\u0644\u0633",
-          "nameEn": "Tripoli",
-          "basket": 1376,
-          "extreme": 1376,
-          "absolute": 2995
-        },
-        {
-          "nameAr": "\u0628\u0646\u063a\u0627\u0632\u064a",
-          "nameEn": "Benghazi",
-          "basket": 1406,
-          "extreme": 1406,
-          "absolute": 3040
-        },
-        {
-          "nameAr": "\u0633\u0628\u0647\u0627",
-          "nameEn": "Sabha",
-          "basket": 1446,
-          "extreme": 1446,
-          "absolute": 3115
-        }
-      ]
+      "extreme": null,
+      "absolute": null,
+      "international": null,
+      "fx": null,
+      "basketCost": null,
+      "familyIncome": null,
+      "regions": []
     },
     "2028-Q1": {
       "available": false,
-      "labelAr": "???? 2028 - ????? ?????",
+      "labelAr": "مارس 2028 - الربع الأول",
       "labelEn": "March 2028 - Q1",
       "year": 2028,
       "quarter": "Q1",
-      "quarterLabelAr": "\u0627\u0644\u0631\u0628\u0639 \u0627\u0644\u0623\u0648\u0644",
+      "quarterLabelAr": "الربع الأول",
       "quarterLabelEn": "Q1",
-      "extreme": 1405,
-      "absolute": 3035,
-      "international": 4390,
-      "fx": 8.04,
-      "basketCost": 1405,
-      "familyIncome": 3690,
-      "regions": [
-        {
-          "nameAr": "\u0637\u0631\u0627\u0628\u0644\u0633",
-          "nameEn": "Tripoli",
-          "basket": 1335,
-          "extreme": 1335,
-          "absolute": 2915
-        },
-        {
-          "nameAr": "\u0628\u0646\u063a\u0627\u0632\u064a",
-          "nameEn": "Benghazi",
-          "basket": 1365,
-          "extreme": 1365,
-          "absolute": 2960
-        },
-        {
-          "nameAr": "\u0633\u0628\u0647\u0627",
-          "nameEn": "Sabha",
-          "basket": 1405,
-          "extreme": 1405,
-          "absolute": 3035
-        }
-      ]
+      "extreme": null,
+      "absolute": null,
+      "international": null,
+      "fx": null,
+      "basketCost": null,
+      "familyIncome": null,
+      "regions": []
     },
     "2028-Q2": {
       "available": false,
-      "labelAr": "????? 2028 - ????? ??????",
+      "labelAr": "يونيو 2028 - الربع الثاني",
       "labelEn": "June 2028 - Q2",
       "year": 2028,
       "quarter": "Q2",
-      "quarterLabelAr": "\u0627\u0644\u0631\u0628\u0639 \u0627\u0644\u062b\u0627\u0646\u064a",
+      "quarterLabelAr": "الربع الثاني",
       "quarterLabelEn": "Q2",
-      "extreme": 1447,
-      "absolute": 3120,
-      "international": 4500,
-      "fx": 8.18,
-      "basketCost": 1447,
-      "familyIncome": 3760,
-      "regions": [
-        {
-          "nameAr": "\u0637\u0631\u0627\u0628\u0644\u0633",
-          "nameEn": "Tripoli",
-          "basket": 1377,
-          "extreme": 1377,
-          "absolute": 3000
-        },
-        {
-          "nameAr": "\u0628\u0646\u063a\u0627\u0632\u064a",
-          "nameEn": "Benghazi",
-          "basket": 1407,
-          "extreme": 1407,
-          "absolute": 3045
-        },
-        {
-          "nameAr": "\u0633\u0628\u0647\u0627",
-          "nameEn": "Sabha",
-          "basket": 1447,
-          "extreme": 1447,
-          "absolute": 3120
-        }
-      ]
+      "extreme": null,
+      "absolute": null,
+      "international": null,
+      "fx": null,
+      "basketCost": null,
+      "familyIncome": null,
+      "regions": []
     },
     "2028-Q3": {
       "available": false,
-      "labelAr": "?????? 2028 - ????? ??????",
+      "labelAr": "سبتمبر 2028 - الربع الثالث",
       "labelEn": "September 2028 - Q3",
       "year": 2028,
       "quarter": "Q3",
-      "quarterLabelAr": "\u0627\u0644\u0631\u0628\u0639 \u0627\u0644\u062b\u0627\u0644\u062b",
+      "quarterLabelAr": "الربع الثالث",
       "quarterLabelEn": "Q3",
-      "extreme": 1489,
-      "absolute": 3205,
-      "international": 4610,
-      "fx": 8.32,
-      "basketCost": 1489,
-      "familyIncome": 3830,
-      "regions": [
-        {
-          "nameAr": "\u0637\u0631\u0627\u0628\u0644\u0633",
-          "nameEn": "Tripoli",
-          "basket": 1419,
-          "extreme": 1419,
-          "absolute": 3085
-        },
-        {
-          "nameAr": "\u0628\u0646\u063a\u0627\u0632\u064a",
-          "nameEn": "Benghazi",
-          "basket": 1449,
-          "extreme": 1449,
-          "absolute": 3130
-        },
-        {
-          "nameAr": "\u0633\u0628\u0647\u0627",
-          "nameEn": "Sabha",
-          "basket": 1489,
-          "extreme": 1489,
-          "absolute": 3205
-        }
-      ]
+      "extreme": null,
+      "absolute": null,
+      "international": null,
+      "fx": null,
+      "basketCost": null,
+      "familyIncome": null,
+      "regions": []
     },
     "2028-Q4": {
       "available": false,
-      "labelAr": "?????? 2028 - ????? ??????",
+      "labelAr": "ديسمبر 2028 - الربع الرابع",
       "labelEn": "December 2028 - Q4",
       "year": 2028,
       "quarter": "Q4",
-      "quarterLabelAr": "\u0627\u0644\u0631\u0628\u0639 \u0627\u0644\u0631\u0627\u0628\u0639",
+      "quarterLabelAr": "الربع الرابع",
       "quarterLabelEn": "Q4",
-      "extreme": 1531,
-      "absolute": 3290,
-      "international": 4720,
-      "fx": 8.46,
-      "basketCost": 1531,
-      "familyIncome": 3900,
-      "regions": [
-        {
-          "nameAr": "\u0637\u0631\u0627\u0628\u0644\u0633",
-          "nameEn": "Tripoli",
-          "basket": 1461,
-          "extreme": 1461,
-          "absolute": 3170
-        },
-        {
-          "nameAr": "\u0628\u0646\u063a\u0627\u0632\u064a",
-          "nameEn": "Benghazi",
-          "basket": 1491,
-          "extreme": 1491,
-          "absolute": 3215
-        },
-        {
-          "nameAr": "\u0633\u0628\u0647\u0627",
-          "nameEn": "Sabha",
-          "basket": 1531,
-          "extreme": 1531,
-          "absolute": 3290
-        }
-      ]
+      "extreme": null,
+      "absolute": null,
+      "international": null,
+      "fx": null,
+      "basketCost": null,
+      "familyIncome": null,
+      "regions": []
     },
     "2029-Q1": {
       "available": false,
-      "labelAr": "???? 2029 - ????? ?????",
+      "labelAr": "مارس 2029 - الربع الأول",
       "labelEn": "March 2029 - Q1",
       "year": 2029,
       "quarter": "Q1",
-      "quarterLabelAr": "\u0627\u0644\u0631\u0628\u0639 \u0627\u0644\u0623\u0648\u0644",
+      "quarterLabelAr": "الربع الأول",
       "quarterLabelEn": "Q1",
-      "extreme": 1495,
-      "absolute": 3215,
-      "international": 4610,
-      "fx": 8.47,
-      "basketCost": 1495,
-      "familyIncome": 3890,
-      "regions": [
-        {
-          "nameAr": "\u0637\u0631\u0627\u0628\u0644\u0633",
-          "nameEn": "Tripoli",
-          "basket": 1425,
-          "extreme": 1425,
-          "absolute": 3095
-        },
-        {
-          "nameAr": "\u0628\u0646\u063a\u0627\u0632\u064a",
-          "nameEn": "Benghazi",
-          "basket": 1455,
-          "extreme": 1455,
-          "absolute": 3140
-        },
-        {
-          "nameAr": "\u0633\u0628\u0647\u0627",
-          "nameEn": "Sabha",
-          "basket": 1495,
-          "extreme": 1495,
-          "absolute": 3215
-        }
-      ]
+      "extreme": null,
+      "absolute": null,
+      "international": null,
+      "fx": null,
+      "basketCost": null,
+      "familyIncome": null,
+      "regions": []
     },
     "2029-Q2": {
       "available": false,
-      "labelAr": "????? 2029 - ????? ??????",
+      "labelAr": "يونيو 2029 - الربع الثاني",
       "labelEn": "June 2029 - Q2",
       "year": 2029,
       "quarter": "Q2",
-      "quarterLabelAr": "\u0627\u0644\u0631\u0628\u0639 \u0627\u0644\u062b\u0627\u0646\u064a",
+      "quarterLabelAr": "الربع الثاني",
       "quarterLabelEn": "Q2",
-      "extreme": 1537,
-      "absolute": 3300,
-      "international": 4720,
-      "fx": 8.61,
-      "basketCost": 1537,
-      "familyIncome": 3960,
-      "regions": [
-        {
-          "nameAr": "\u0637\u0631\u0627\u0628\u0644\u0633",
-          "nameEn": "Tripoli",
-          "basket": 1467,
-          "extreme": 1467,
-          "absolute": 3180
-        },
-        {
-          "nameAr": "\u0628\u0646\u063a\u0627\u0632\u064a",
-          "nameEn": "Benghazi",
-          "basket": 1497,
-          "extreme": 1497,
-          "absolute": 3225
-        },
-        {
-          "nameAr": "\u0633\u0628\u0647\u0627",
-          "nameEn": "Sabha",
-          "basket": 1537,
-          "extreme": 1537,
-          "absolute": 3300
-        }
-      ]
+      "extreme": null,
+      "absolute": null,
+      "international": null,
+      "fx": null,
+      "basketCost": null,
+      "familyIncome": null,
+      "regions": []
     },
     "2029-Q3": {
       "available": false,
-      "labelAr": "?????? 2029 - ????? ??????",
+      "labelAr": "سبتمبر 2029 - الربع الثالث",
       "labelEn": "September 2029 - Q3",
       "year": 2029,
       "quarter": "Q3",
-      "quarterLabelAr": "\u0627\u0644\u0631\u0628\u0639 \u0627\u0644\u062b\u0627\u0644\u062b",
+      "quarterLabelAr": "الربع الثالث",
       "quarterLabelEn": "Q3",
-      "extreme": 1579,
-      "absolute": 3385,
-      "international": 4830,
-      "fx": 8.75,
-      "basketCost": 1579,
-      "familyIncome": 4030,
-      "regions": [
-        {
-          "nameAr": "\u0637\u0631\u0627\u0628\u0644\u0633",
-          "nameEn": "Tripoli",
-          "basket": 1509,
-          "extreme": 1509,
-          "absolute": 3265
-        },
-        {
-          "nameAr": "\u0628\u0646\u063a\u0627\u0632\u064a",
-          "nameEn": "Benghazi",
-          "basket": 1539,
-          "extreme": 1539,
-          "absolute": 3310
-        },
-        {
-          "nameAr": "\u0633\u0628\u0647\u0627",
-          "nameEn": "Sabha",
-          "basket": 1579,
-          "extreme": 1579,
-          "absolute": 3385
-        }
-      ]
+      "extreme": null,
+      "absolute": null,
+      "international": null,
+      "fx": null,
+      "basketCost": null,
+      "familyIncome": null,
+      "regions": []
     },
     "2029-Q4": {
       "available": false,
-      "labelAr": "?????? 2029 - ????? ??????",
+      "labelAr": "ديسمبر 2029 - الربع الرابع",
       "labelEn": "December 2029 - Q4",
       "year": 2029,
       "quarter": "Q4",
-      "quarterLabelAr": "\u0627\u0644\u0631\u0628\u0639 \u0627\u0644\u0631\u0627\u0628\u0639",
+      "quarterLabelAr": "الربع الرابع",
       "quarterLabelEn": "Q4",
-      "extreme": 1621,
-      "absolute": 3470,
-      "international": 4940,
-      "fx": 8.89,
-      "basketCost": 1621,
-      "familyIncome": 4100,
-      "regions": [
-        {
-          "nameAr": "\u0637\u0631\u0627\u0628\u0644\u0633",
-          "nameEn": "Tripoli",
-          "basket": 1551,
-          "extreme": 1551,
-          "absolute": 3350
-        },
-        {
-          "nameAr": "\u0628\u0646\u063a\u0627\u0632\u064a",
-          "nameEn": "Benghazi",
-          "basket": 1581,
-          "extreme": 1581,
-          "absolute": 3395
-        },
-        {
-          "nameAr": "\u0633\u0628\u0647\u0627",
-          "nameEn": "Sabha",
-          "basket": 1621,
-          "extreme": 1621,
-          "absolute": 3470
-        }
-      ]
+      "extreme": null,
+      "absolute": null,
+      "international": null,
+      "fx": null,
+      "basketCost": null,
+      "familyIncome": null,
+      "regions": []
     },
     "2030-Q1": {
       "available": false,
-      "labelAr": "???? 2030 - ????? ?????",
+      "labelAr": "مارس 2030 - الربع الأول",
       "labelEn": "March 2030 - Q1",
       "year": 2030,
       "quarter": "Q1",
-      "quarterLabelAr": "\u0627\u0644\u0631\u0628\u0639 \u0627\u0644\u0623\u0648\u0644",
+      "quarterLabelAr": "الربع الأول",
       "quarterLabelEn": "Q1",
-      "extreme": 1585,
-      "absolute": 3405,
-      "international": 4840,
-      "fx": 8.95,
-      "basketCost": 1585,
-      "familyIncome": 4100,
-      "regions": [
-        {
-          "nameAr": "\u0637\u0631\u0627\u0628\u0644\u0633",
-          "nameEn": "Tripoli",
-          "basket": 1515,
-          "extreme": 1515,
-          "absolute": 3285
-        },
-        {
-          "nameAr": "\u0628\u0646\u063a\u0627\u0632\u064a",
-          "nameEn": "Benghazi",
-          "basket": 1545,
-          "extreme": 1545,
-          "absolute": 3330
-        },
-        {
-          "nameAr": "\u0633\u0628\u0647\u0627",
-          "nameEn": "Sabha",
-          "basket": 1585,
-          "extreme": 1585,
-          "absolute": 3405
-        }
-      ]
+      "extreme": null,
+      "absolute": null,
+      "international": null,
+      "fx": null,
+      "basketCost": null,
+      "familyIncome": null,
+      "regions": []
     },
     "2030-Q2": {
       "available": false,
-      "labelAr": "????? 2030 - ????? ??????",
+      "labelAr": "يونيو 2030 - الربع الثاني",
       "labelEn": "June 2030 - Q2",
       "year": 2030,
       "quarter": "Q2",
-      "quarterLabelAr": "\u0627\u0644\u0631\u0628\u0639 \u0627\u0644\u062b\u0627\u0646\u064a",
+      "quarterLabelAr": "الربع الثاني",
       "quarterLabelEn": "Q2",
-      "extreme": 1627,
-      "absolute": 3490,
-      "international": 4950,
-      "fx": 9.09,
-      "basketCost": 1627,
-      "familyIncome": 4170,
-      "regions": [
-        {
-          "nameAr": "\u0637\u0631\u0627\u0628\u0644\u0633",
-          "nameEn": "Tripoli",
-          "basket": 1557,
-          "extreme": 1557,
-          "absolute": 3370
-        },
-        {
-          "nameAr": "\u0628\u0646\u063a\u0627\u0632\u064a",
-          "nameEn": "Benghazi",
-          "basket": 1587,
-          "extreme": 1587,
-          "absolute": 3415
-        },
-        {
-          "nameAr": "\u0633\u0628\u0647\u0627",
-          "nameEn": "Sabha",
-          "basket": 1627,
-          "extreme": 1627,
-          "absolute": 3490
-        }
-      ]
+      "extreme": null,
+      "absolute": null,
+      "international": null,
+      "fx": null,
+      "basketCost": null,
+      "familyIncome": null,
+      "regions": []
     },
     "2030-Q3": {
       "available": false,
-      "labelAr": "?????? 2030 - ????? ??????",
+      "labelAr": "سبتمبر 2030 - الربع الثالث",
       "labelEn": "September 2030 - Q3",
       "year": 2030,
       "quarter": "Q3",
-      "quarterLabelAr": "\u0627\u0644\u0631\u0628\u0639 \u0627\u0644\u062b\u0627\u0644\u062b",
+      "quarterLabelAr": "الربع الثالث",
       "quarterLabelEn": "Q3",
-      "extreme": 1669,
-      "absolute": 3575,
-      "international": 5060,
-      "fx": 9.23,
-      "basketCost": 1669,
-      "familyIncome": 4240,
-      "regions": [
-        {
-          "nameAr": "\u0637\u0631\u0627\u0628\u0644\u0633",
-          "nameEn": "Tripoli",
-          "basket": 1599,
-          "extreme": 1599,
-          "absolute": 3455
-        },
-        {
-          "nameAr": "\u0628\u0646\u063a\u0627\u0632\u064a",
-          "nameEn": "Benghazi",
-          "basket": 1629,
-          "extreme": 1629,
-          "absolute": 3500
-        },
-        {
-          "nameAr": "\u0633\u0628\u0647\u0627",
-          "nameEn": "Sabha",
-          "basket": 1669,
-          "extreme": 1669,
-          "absolute": 3575
-        }
-      ]
+      "extreme": null,
+      "absolute": null,
+      "international": null,
+      "fx": null,
+      "basketCost": null,
+      "familyIncome": null,
+      "regions": []
     },
     "2030-Q4": {
       "available": false,
-      "labelAr": "?????? 2030 - ????? ??????",
+      "labelAr": "ديسمبر 2030 - الربع الرابع",
       "labelEn": "December 2030 - Q4",
       "year": 2030,
       "quarter": "Q4",
-      "quarterLabelAr": "\u0627\u0644\u0631\u0628\u0639 \u0627\u0644\u0631\u0627\u0628\u0639",
+      "quarterLabelAr": "الربع الرابع",
       "quarterLabelEn": "Q4",
-      "extreme": 1711,
-      "absolute": 3660,
-      "international": 5170,
-      "fx": 9.37,
-      "basketCost": 1711,
-      "familyIncome": 4310,
-      "regions": [
-        {
-          "nameAr": "\u0637\u0631\u0627\u0628\u0644\u0633",
-          "nameEn": "Tripoli",
-          "basket": 1641,
-          "extreme": 1641,
-          "absolute": 3540
-        },
-        {
-          "nameAr": "\u0628\u0646\u063a\u0627\u0632\u064a",
-          "nameEn": "Benghazi",
-          "basket": 1671,
-          "extreme": 1671,
-          "absolute": 3585
-        },
-        {
-          "nameAr": "\u0633\u0628\u0647\u0627",
-          "nameEn": "Sabha",
-          "basket": 1711,
-          "extreme": 1711,
-          "absolute": 3660
-        }
-      ]
+      "extreme": null,
+      "absolute": null,
+      "international": null,
+      "fx": null,
+      "basketCost": null,
+      "familyIncome": null,
+      "regions": []
     }
   },
   "historicalMeasures": [
     {
       "year": 2003,
       "institution": {
-        "ar": "\u0645\u0635\u0644\u062d\u0629 \u0627\u0644\u0625\u062d\u0635\u0627\u0621 \u0648\u0627\u0644\u062a\u0639\u062f\u0627\u062f \u0627\u0644\u0644\u064a\u0628\u064a\u0629 \u0648\u0627\u0644\u0628\u0646\u0643 \u0627\u0644\u062f\u0648\u0644\u064a",
+        "ar": "مصلحة الإحصاء والتعداد الليبية والبنك الدولي",
         "en": "Libyan Census and Statistics Authority with the World Bank"
       },
       "single": {
-        "ar": "\u0633\u0646\u0648\u064a\u0627\u064b: 580 \u062f.\u0644\n\u0634\u0647\u0631\u064a\u0627\u064b: 45 \u062f.\u0644\n\u064a\u0648\u0645\u064a\u0627\u064b: 1.5 \u062f.\u0644",
+        "ar": "سنوياً: 580 د.ل\nشهرياً: 45 د.ل\nيومياً: 1.5 د.ل",
         "en": "Yearly: LYD 580\nMonthly: LYD 45\nDaily: LYD 1.5"
       },
       "family": {
-        "ar": "225 \u062f.\u0644",
+        "ar": "225 د.ل",
         "en": "LYD 225"
       },
       "rate": "11.8%",
       "survey": {
-        "ar": "\u0645\u0633\u062d 2003",
+        "ar": "مسح 2003",
         "en": "2003 survey"
       }
     },
     {
       "year": 2013,
       "institution": {
-        "ar": "\u0627\u0644\u0628\u0646\u0643 \u0627\u0644\u062f\u0648\u0644\u064a \u0648\u0641\u0642 \u0645\u0639\u062f\u0644 \u0627\u0644\u062a\u0636\u062e\u0645 (\u0623\u0633\u0627\u0633 2003)",
-        "en": "World Bank inflation-adjusted estimate (2003 base)"
+        "ar": "البنك الدولي (بيانات معدلات حساب التضخم 2003)",
+        "en": "World Bank inflation-adjusted data (2003 base)"
       },
       "single": {
-        "ar": "\u0633\u0646\u0648\u064a\u0627\u064b: 966 \u062f.\u0644\n\u0634\u0647\u0631\u064a\u0627\u064b: 78 \u062f.\u0644\n\u064a\u0648\u0645\u064a\u0627\u064b: 2.6 \u062f.\u0644",
-        "en": "Yearly: LYD 966\nMonthly: LYD 78\nDaily: LYD 2.6"
+        "ar": "سنوياً: 966 د.ل\nشهرياً: 80 د.ل\nيومياً: 2.6 د.ل",
+        "en": "Yearly: LYD 966\nMonthly: LYD 80\nDaily: LYD 2.6"
       },
       "family": {
-        "ar": "390 \u062f.\u0644",
+        "ar": "390 د.ل",
         "en": "LYD 390"
       },
       "rate": "14.4%",
       "survey": {
-        "ar": "\u062a\u0642\u062f\u064a\u0631 2013",
-        "en": "2013 estimate"
+        "ar": "مسح 2003",
+        "en": "2003 survey"
       }
     },
     {
       "year": 2023,
       "institution": {
-        "ar": "\u062c\u0627\u0645\u0639\u0629 \u0645\u0635\u0631\u0627\u062a\u0629",
+        "ar": "جامعة مصراتة",
         "en": "Misrata University"
       },
       "single": {
-        "ar": "\u0633\u0646\u0648\u064a\u0627\u064b: 5640 \u062f.\u0644\n\u0634\u0647\u0631\u064a\u0627\u064b: 462 \u062f.\u0644\n\u064a\u0648\u0645\u064a\u0627\u064b: 15.4 \u062f.\u0644",
+        "ar": "سنوياً: 5640 د.ل\nشهرياً: 462 د.ل\nيومياً: 15.4 د.ل",
         "en": "Yearly: LYD 5,640\nMonthly: LYD 462\nDaily: LYD 15.4"
       },
       "family": {
-        "ar": "2350 \u062f.\u0644",
+        "ar": "2350 د.ل",
         "en": "LYD 2,350"
       },
       "rate": "32%",
       "survey": {
-        "ar": "\u0645\u0633\u062d 2022-2023",
+        "ar": "مسح 2022-2023",
         "en": "2022-2023 survey"
       }
     }
@@ -874,5 +456,6 @@ window.DASHBOARD_DATA = {
       "bfx": 17,
       "meb": 18
     }
-  ]
+  ],
+  "schemaVersion": 2
 };

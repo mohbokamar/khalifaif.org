@@ -299,6 +299,7 @@
     <script>
       const STORAGE_KEY = "kif-dashboard-data";
       const LANG_KEY = "kif-dashboard-lang";
+      const DATA_SCHEMA_VERSION = 2;
 
       let source = null;
       let currentLang = localStorage.getItem(LANG_KEY) || "ar";
@@ -413,6 +414,53 @@
         document.getElementById("statusBox").textContent = text;
       }
 
+      function normalizeSource(raw) {
+        if (!raw || typeof raw !== "object") {
+          return raw;
+        }
+
+        if (Array.isArray(raw.historicalMeasures)) {
+          raw.historicalMeasures = raw.historicalMeasures.map((row) => {
+            if (row && typeof row === "object" && ("institutionAr" in row || "individualAr" in row || "percent" in row)) {
+              return {
+                year: Number(row.year ?? 0),
+                institution: {
+                  ar: row.institutionAr ?? "",
+                  en: row.institutionEn ?? ""
+                },
+                rate: row.percent ?? "",
+                family: {
+                  ar: row.familyAr ?? "",
+                  en: row.familyEn ?? ""
+                },
+                single: {
+                  ar: row.individualAr ?? "",
+                  en: row.individualEn ?? ""
+                },
+                survey: {
+                  ar: row.surveyAr ?? "",
+                  en: row.surveyEn ?? ""
+                }
+              };
+            }
+
+            return row;
+          });
+        }
+
+        if (raw.marketTrend && !Array.isArray(raw.marketTrend) && Array.isArray(raw.marketTrend.labels)) {
+          raw.marketTrend = raw.marketTrend.labels.map((label, index) => ({
+            periodAr: String(label ?? ""),
+            periodEn: String(label ?? ""),
+            bfx: Number(raw.marketTrend.bfx?.[index] ?? 0),
+            meb: Number(raw.marketTrend.meb?.[index] ?? 0)
+          }));
+        }
+
+        raw.schemaVersion = DATA_SCHEMA_VERSION;
+        return raw;
+      }
+
       function loadOptions() {
         const sortedKeys = Object.keys(source.periods)
           .sort((left, right) => {
@@ -475,6 +523,7 @@
       }
 
       function saveLocal() {
+        source.schemaVersion = DATA_SCHEMA_VERSION;
         localStorage.setItem(STORAGE_KEY, JSON.stringify(source));
         setStatus(ui[currentLang].localSaved);
       }
@@ -542,25 +591,37 @@
 
         if (historyRows.length) {
           source.historicalMeasures = historyRows.map((row) => ({
-            year: String(row.year ?? ""),
-            institutionAr: row.institution_ar,
-            institutionEn: row.institution_en,
-            percent: row.percent,
-            familyAr: row.family_ar,
-            familyEn: row.family_en,
-            familyValue: row.family_value == null ? null : Number(row.family_value),
-            individualAr: row.individual_ar,
-            individualEn: row.individual_en
+            year: Number(row.year ?? 0),
+            institution: {
+              ar: row.institution_ar ?? "",
+              en: row.institution_en ?? ""
+            },
+            rate: row.rate ?? row.percent ?? "",
+            family: {
+              ar: row.family_ar ?? "",
+              en: row.family_en ?? ""
+            },
+            single: {
+              ar: row.single_ar ?? row.individual_ar ?? "",
+              en: row.single_en ?? row.individual_en ?? ""
+            },
+            survey: {
+              ar: row.survey_ar ?? "",
+              en: row.survey_en ?? ""
+            }
           }));
         }
 
         if (marketRows.length) {
-          source.marketTrend = {
-            labels: marketRows.map((row) => row.label),
-            bfx: marketRows.map((row) => Number(row.bfx ?? 0)),
-            meb: marketRows.map((row) => Number(row.meb ?? 0))
-          };
+          source.marketTrend = marketRows.map((row) => ({
+            periodAr: row.period_ar ?? row.label ?? "",
+            periodEn: row.period_en ?? row.label ?? "",
+            bfx: Number(row.bfx ?? 0),
+            meb: Number(row.meb ?? 0)
+          }));
         }
+
+        source.schemaVersion = DATA_SCHEMA_VERSION;
       }
 
       async function handleExcelImport() {
@@ -579,7 +640,7 @@
 
       async function init() {
         const saved = localStorage.getItem(STORAGE_KEY);
-        source = saved ? JSON.parse(saved) : (window.DASHBOARD_DATA || await (await fetch("./dashboard-data.json")).json());
+        source = normalizeSource(saved ? JSON.parse(saved) : (window.DASHBOARD_DATA || await (await fetch("./dashboard-data.json")).json()));
         applyLang();
         loadOptions();
 

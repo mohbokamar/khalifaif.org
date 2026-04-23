@@ -1,5 +1,6 @@
 const STORAGE_KEY = "kif-dashboard-data";
 const LANG_KEY = "kif-dashboard-lang";
+const DATA_SCHEMA_VERSION = 2;
 
 let dashboardData;
 
@@ -35,9 +36,9 @@ const translations = {
     noDataSummary: "\u0647\u0630\u0647 \u0627\u0644\u0641\u062a\u0631\u0629 \u063a\u064a\u0631 \u0645\u062a\u0648\u0641\u0631\u0629 \u062d\u0627\u0644\u064a\u064b\u0627. \u0633\u064a\u062a\u0645 \u0625\u062f\u062e\u0627\u0644 \u0628\u064a\u0627\u0646\u0627\u062a\u0647\u0627 \u0644\u0627\u062d\u0642\u064b\u0627 \u0645\u0646 \u0644\u0648\u062d\u0629 \u0627\u0644\u0623\u062f\u0645\u0646.",
     noDataCard: "\u0644\u0627 \u062a\u0648\u062c\u062f \u0628\u064a\u0627\u0646\u0627\u062a \u0631\u0642\u0645\u064a\u0629 \u0644\u0647\u0630\u0647 \u0627\u0644\u0641\u062a\u0631\u0629 \u0628\u0639\u062f.",
     calculatorNoData: "\u064a\u062c\u0628 \u0627\u062e\u062a\u064a\u0627\u0631 \u0641\u062a\u0631\u0629 \u0645\u062a\u0648\u0641\u0631\u0629 \u0642\u0628\u0644 \u0627\u0633\u062a\u062e\u062f\u0627\u0645 \u0627\u0644\u062d\u0627\u0633\u0628\u0629.",
-    calculatorSummaryStable: "\u062f\u062e\u0644 \u0627\u0644\u0623\u0633\u0631\u0629 \u0623\u0639\u0644\u0649 \u0645\u0646 \u062e\u0637 \u0627\u0644\u0641\u0642\u0631 \u0627\u0644\u0645\u0637\u0644\u0642 \u0644\u0644\u0641\u062a\u0631\u0629 \u0627\u0644\u062d\u0627\u0644\u064a\u0629.",
-    calculatorSummaryAbsolute: "\u062f\u062e\u0644 \u0627\u0644\u0623\u0633\u0631\u0629 \u0623\u0642\u0644 \u0645\u0646 \u062e\u0637 \u0627\u0644\u0641\u0642\u0631 \u0627\u0644\u0645\u0637\u0644\u0642 \u0644\u0643\u0646\u0647 \u0623\u0639\u0644\u0649 \u0645\u0646 \u0627\u0644\u062e\u0637 \u0627\u0644\u0645\u062f\u0642\u0639.",
-    calculatorSummaryExtreme: "\u062f\u062e\u0644 \u0627\u0644\u0623\u0633\u0631\u0629 \u0623\u0642\u0644 \u0645\u0646 \u062e\u0637 \u0627\u0644\u0641\u0642\u0631 \u0627\u0644\u0645\u062f\u0642\u0639.",
+    calculatorSummaryStable: "\u062f\u062e\u0644 \u0627\u0644\u0623\u0633\u0631\u0629 \u0623\u0639\u0644\u0649 \u0645\u0646 \u062e\u0637 \u0627\u0644\u0641\u0642\u0631 \u0627\u0644\u0645\u0637\u0644\u0642 \u0628\u0639\u062f \u062a\u0639\u062f\u064a\u0644\u0647 \u062d\u0633\u0628 \u0633\u0639\u0631 \u0627\u0644\u062f\u0648\u0644\u0627\u0631 \u0627\u0644\u0645\u062f\u062e\u0644.",
+    calculatorSummaryAbsolute: "\u062f\u062e\u0644 \u0627\u0644\u0623\u0633\u0631\u0629 \u0623\u0642\u0644 \u0645\u0646 \u062e\u0637 \u0627\u0644\u0641\u0642\u0631 \u0627\u0644\u0645\u0637\u0644\u0642 \u0627\u0644\u0645\u0639\u062f\u0644 \u0648\u0623\u0639\u0644\u0649 \u0645\u0646 \u062e\u0637 \u0627\u0644\u0641\u0642\u0631 \u0627\u0644\u0645\u062f\u0642\u0639.",
+    calculatorSummaryExtreme: "\u062f\u062e\u0644 \u0627\u0644\u0623\u0633\u0631\u0629 \u0623\u0642\u0644 \u0645\u0646 \u062e\u0637 \u0627\u0644\u0641\u0642\u0631 \u0627\u0644\u0645\u062f\u0642\u0639 \u0627\u0644\u0645\u0639\u062f\u0644 \u062d\u0633\u0628 \u0633\u0639\u0631 \u0627\u0644\u062f\u0648\u0644\u0627\u0631.",
     cityTripoli: "\u0637\u0631\u0627\u0628\u0644\u0633",
     cityBenghazi: "\u0628\u0646\u063a\u0627\u0632\u064a",
     citySabha: "\u0633\u0628\u0647\u0627",
@@ -47,10 +48,11 @@ const translations = {
     chartMeb: "\u0627\u0644\u0645\u062f\u0642\u0639 (MEB)",
     chartMebPlus: "\u0627\u0644\u0645\u0637\u0644\u0642 (MEB+)",
     chartIntl: "\u0627\u0644\u062f\u0648\u0644\u064a (8$)",
-    chartBfx: "BFX % ????? ???????",
-    chartMebMarket: "MEB % ??? ???????",
+    chartBfx: "\u0627\u0644\u0633\u0648\u0642 \u0627\u0644\u0645\u0648\u0627\u0632\u064a BFX %",
+    chartMebMarket: "\u0633\u0644\u0629 \u0627\u0644\u0625\u0646\u0641\u0627\u0642 MEB %",
     close: "\u0625\u063a\u0644\u0627\u0642",
-    brandAlt: "\u0634\u0639\u0627\u0631 \u0645\u0624\u0633\u0633\u0629 \u062e\u0644\u064a\u0641\u0629 \u0627\u0644\u062f\u0648\u0644\u064a\u0629"
+    brandAlt: "\u0634\u0639\u0627\u0631 \u0645\u0624\u0633\u0633\u0629 \u062e\u0644\u064a\u0641\u0629 \u0627\u0644\u062f\u0648\u0644\u064a\u0629",
+    heroTitle: "<span class=\"hero-title__gold\">\u062e\u0637 \u0627\u0644\u0641\u0642\u0631</span><span class=\"hero-title__white\">\u0641\u064a \u0644\u064a\u0628\u064a\u0627</span>"
   },
   en: {
     unavailable: "Currently unavailable",
@@ -76,9 +78,9 @@ const translations = {
     noDataSummary: "This period is currently unavailable. Its data can be added later from the admin dashboard.",
     noDataCard: "No numeric data is available for this period yet.",
     calculatorNoData: "Please select an available period before using the calculator.",
-    calculatorSummaryStable: "Household income is above the absolute poverty line for the current period.",
-    calculatorSummaryAbsolute: "Household income is below the absolute poverty line but above the extreme line.",
-    calculatorSummaryExtreme: "Household income is below the extreme poverty line.",
+    calculatorSummaryStable: "Household income is above the poverty line after adjusting it by the entered USD rate.",
+    calculatorSummaryAbsolute: "Household income is below the adjusted absolute poverty line but above the extreme line.",
+    calculatorSummaryExtreme: "Household income is below the adjusted extreme poverty line.",
     cityTripoli: "Tripoli",
     cityBenghazi: "Benghazi",
     citySabha: "Sabha",
@@ -88,10 +90,11 @@ const translations = {
     chartMeb: "Extreme (MEB)",
     chartMebPlus: "Absolute (MEB+)",
     chartIntl: "International (8$)",
-    chartBfx: "BFX % ????? ???????",
-    chartMebMarket: "MEB % ??? ???????",
+    chartBfx: "Parallel Market BFX %",
+    chartMebMarket: "MEB Basket %",
     close: "Close",
-    brandAlt: "Khalifa Foundation logo"
+    brandAlt: "Khalifa Foundation logo",
+    heroTitle: "<span class=\"hero-title__gold\">Poverty Line</span><span class=\"hero-title__white\">in Libya</span>"
   }
 };
 
@@ -124,6 +127,55 @@ function t(key) {
 
 function deepClone(value) {
   return JSON.parse(JSON.stringify(value));
+}
+
+function migrateLegacyData(rawData) {
+  if (!rawData || typeof rawData !== "object") {
+    return rawData;
+  }
+
+  const migrated = deepClone(rawData);
+
+  if (Array.isArray(migrated.historicalMeasures)) {
+    migrated.historicalMeasures = migrated.historicalMeasures.map((row) => {
+      if (row && typeof row === "object" && ("institutionAr" in row || "individualAr" in row || "percent" in row)) {
+        return {
+          year: Number(row.year ?? 0),
+          institution: {
+            ar: row.institutionAr ?? "",
+            en: row.institutionEn ?? ""
+          },
+          single: {
+            ar: row.individualAr ?? "",
+            en: row.individualEn ?? ""
+          },
+          family: {
+            ar: row.familyAr ?? "",
+            en: row.familyEn ?? ""
+          },
+          rate: row.percent ?? "",
+          survey: {
+            ar: row.surveyAr ?? "",
+            en: row.surveyEn ?? ""
+          }
+        };
+      }
+
+      return row;
+    });
+  }
+
+  if (migrated.marketTrend && !Array.isArray(migrated.marketTrend) && Array.isArray(migrated.marketTrend.labels)) {
+    migrated.marketTrend = migrated.marketTrend.labels.map((label, index) => ({
+      periodAr: String(label ?? ""),
+      periodEn: String(label ?? ""),
+      bfx: Number(migrated.marketTrend.bfx?.[index] ?? 0),
+      meb: Number(migrated.marketTrend.meb?.[index] ?? 0)
+    }));
+  }
+
+  migrated.schemaVersion = DATA_SCHEMA_VERSION;
+  return migrated;
 }
 
 function looksCorrupted(value) {
@@ -166,11 +218,12 @@ function normalizeData(rawData) {
     return rawData;
   }
 
-  const data = rawData ? deepClone(rawData) : {};
+  const data = rawData ? migrateLegacyData(rawData) : {};
   const merged = {
     ...fallback,
     ...data,
-    periods: {}
+    periods: {},
+    schemaVersion: DATA_SCHEMA_VERSION
   };
 
   Object.keys(fallback.periods).forEach((key) => {
@@ -191,7 +244,9 @@ async function loadDashboardData() {
 
   if (savedData) {
     try {
-      return normalizeData(JSON.parse(savedData));
+      const normalizedSaved = normalizeData(JSON.parse(savedData));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(normalizedSaved));
+      return normalizedSaved;
     } catch (error) {
       console.warn("Failed to parse saved data, falling back to defaults.", error);
     }
@@ -281,6 +336,11 @@ function applyStaticTranslations() {
     elements.brandLogo.alt = t("brandAlt");
   }
 
+  const heroTitle = document.querySelector(".hero-copy h1");
+  if (heroTitle) {
+    heroTitle.innerHTML = t("heroTitle");
+  }
+
   document.querySelectorAll("[data-copy]").forEach((node) => {
     const key = state.language === "ar" ? "copyAr" : "copyEn";
     if (node.dataset[key]) {
@@ -364,10 +424,11 @@ function buildHistoryTable() {
     .map((row) => `
       <tr>
         <td>${row.year}</td>
-        <td>${state.language === "ar" ? row.institution?.ar ?? "" : row.institution?.en ?? ""}</td>
-        <td>${row.rate ?? ""}</td>
-        <td>${state.language === "ar" ? row.family?.ar ?? "" : row.family?.en ?? ""}</td>
         <td>${state.language === "ar" ? String(row.single?.ar ?? "").replace(/\n/g, "<br />") : String(row.single?.en ?? "").replace(/\n/g, "<br />")}</td>
+        <td>${state.language === "ar" ? row.family?.ar ?? "" : row.family?.en ?? ""}</td>
+        <td>${row.rate ?? ""}</td>
+        <td>${state.language === "ar" ? row.institution?.ar ?? "" : row.institution?.en ?? ""}</td>
+        <td>${state.language === "ar" ? row.survey?.ar ?? "" : row.survey?.en ?? ""}</td>
       </tr>
     `)
     .join("");
@@ -511,6 +572,8 @@ function updateCalculatorResult() {
 
   if (!period.available) {
     elements.familyStatusPill.textContent = t("unavailable");
+    elements.familyStatusPill.classList.remove("is-stable", "is-absolute", "is-extreme");
+    elements.familyStatusPill.closest(".calculator-result")?.classList.remove("is-stable", "is-absolute", "is-extreme");
     setText("calcExtremeThreshold", t("unavailable"));
     setText("calcAbsoluteThreshold", t("unavailable"));
     setText("calcUsdValue", t("unavailable"));
@@ -522,22 +585,30 @@ function updateCalculatorResult() {
   const income = Number(elements.familyIncomeInput.value || 0);
   const fx = Number(elements.familyFxInput.value || 0);
   const scale = members / 5;
-  const extremeThreshold = period.extreme * scale;
-  const absoluteThreshold = period.absolute * scale;
+  const fxScale = fx > 0 && period.fx > 0 ? fx / period.fx : 1;
+  const extremeThreshold = period.extreme * scale * fxScale;
+  const absoluteThreshold = period.absolute * scale * fxScale;
   const usdValue = fx > 0 ? income / fx : 0;
 
   let statusText = t("familyStable");
   let summaryText = t("calculatorSummaryStable");
+  let statusClass = "is-stable";
 
   if (income < extremeThreshold) {
     statusText = t("extremePoverty");
     summaryText = t("calculatorSummaryExtreme");
+    statusClass = "is-extreme";
   } else if (income < absoluteThreshold) {
     statusText = t("absolutePoverty");
     summaryText = t("calculatorSummaryAbsolute");
+    statusClass = "is-absolute";
   }
 
   elements.familyStatusPill.textContent = statusText;
+  elements.familyStatusPill.classList.remove("is-stable", "is-absolute", "is-extreme");
+  elements.familyStatusPill.classList.add(statusClass);
+  elements.familyStatusPill.closest(".calculator-result")?.classList.remove("is-stable", "is-absolute", "is-extreme");
+  elements.familyStatusPill.closest(".calculator-result")?.classList.add(statusClass);
   setText("calcExtremeThreshold", formatCurrency(extremeThreshold));
   setText("calcAbsoluteThreshold", formatCurrency(absoluteThreshold));
   setText("calcUsdValue", usdValue ? `$${usdValue.toFixed(0)}` : t("unavailable"));
@@ -655,6 +726,10 @@ function setupEvents() {
   elements.familyForm.addEventListener("submit", (event) => {
     event.preventDefault();
     updateCalculatorResult();
+  });
+
+  [elements.familyMembersInput, elements.familyIncomeInput, elements.familyFxInput].forEach((input) => {
+    input.addEventListener("input", updateCalculatorResult);
   });
 
   elements.langButtons.forEach((button) => {
